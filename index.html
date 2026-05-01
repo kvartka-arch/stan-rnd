@@ -517,6 +517,97 @@
     border-radius: 7px;
   }
   .legend-item { display: flex; align-items: center; gap: 6px; }
+  /* MERCHANT RANKING SECTION */
+  .ranking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  @media (max-width: 1000px) { .ranking-grid { grid-template-columns: 1fr; } }
+  .ranking-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .ranking-card-title {
+    background: linear-gradient(90deg, var(--graphite) 0%, #2d2a48 100%);
+    color: white;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+  .ranking-notes {
+    padding: 7px 14px 6px;
+    background: var(--gray-light);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .ranking-note {
+    font-size: 11px;
+    color: var(--gray);
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  .ranking-note-dot {
+    width: 7px; height: 7px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .dot-licensed { background: #f87171; }
+  .dot-flag { background: #f59e0b; }
+  .ranking-table { width: 100%; border-collapse: collapse; }
+  .ranking-table thead th {
+    background: var(--gray-light);
+    color: var(--gray);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    padding: 7px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .ranking-table thead th:first-child { text-align: center; width: 30px; }
+  .ranking-table thead th.num-col { text-align: right; }
+  .ranking-table tbody tr:not(:last-child) td { border-bottom: 1px solid #f0eff7; }
+  .ranking-table tbody tr:hover td { background: #faf9ff; }
+  .ranking-table td {
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--graphite);
+    vertical-align: middle;
+  }
+  .ranking-table td:first-child {
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray);
+    font-weight: 600;
+    width: 30px;
+  }
+  .ranking-table td.num-col { text-align: right; font-variant-numeric: tabular-nums; }
+  .ranking-table td.merchant-name { font-weight: 600; }
+  .ranking-table td.score-col { font-family: 'Consolas','SF Mono',monospace; font-size: 11px; }
+  /* Licensed platform row highlight */
+  .row-licensed td { background: #fff0f0; }
+  .row-licensed:hover td { background: #ffe4e4 !important; }
+  .row-licensed td.merchant-name { color: #b91c1c; }
+  /* Mostbet Similarweb flag */
+  .cell-flag {
+    background: #fef9c3;
+    color: #854d0e;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 1px 4px;
+  }
 </style>
 </head>
 <body>
@@ -536,6 +627,7 @@
 <!-- STICKY NAV -->
 <nav class="toc-bar">
   <span class="toc-label">Jump to section</span>
+  <a href="#merchant-ranking">Merchant Ranking</a>
   <a href="#pse">PSE</a>
   <a href="#nequi">Nequi</a>
   <a href="#breb">Bre-b</a>
@@ -549,6 +641,109 @@
 </nav>
 
 <div class="content">
+
+<!-- ==================== MERCHANT RANKING IN COLOMBIA ==================== -->
+<div class="section-block" id="merchant-ranking">
+  <span class="section-label">Market Overview</span>
+  <div class="payment-method-title" style="font-size:22px">📊 Merchant Ranking in Colombia</div>
+  <div class="section-desc">Merchant visibility ranking based on March data from Google Trends, Ahrefs Keys, and Similarweb.</div>
+
+  <div class="ranking-grid">
+
+    <!-- BETTING -->
+    <div class="ranking-card">
+      <div class="ranking-card-title">🎲 Betting Merchant Ranking</div>
+      <div class="ranking-notes">
+        <div class="ranking-note"><span class="ranking-note-dot dot-licensed"></span>Highlighted merchants = licensed platforms in Colombia.</div>
+        <div class="ranking-note"><span class="ranking-note-dot dot-flag"></span>Mostbet Similarweb value is highlighted because search demand exists, but no valid working domain was found.</div>
+      </div>
+      <table class="ranking-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Merchant</th>
+            <th class="num-col">Total Score</th>
+            <th class="num-col">Google Trends</th>
+            <th class="num-col">Ahrefs Keys</th>
+            <th class="num-col">Similarweb</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-licensed"><td>1</td><td class="merchant-name">betplay</td><td class="num-col score-col">0,99477</td><td class="num-col">39</td><td class="num-col">2 120 000</td><td class="num-col">8 880 649</td></tr>
+          <tr class="row-licensed"><td>2</td><td class="merchant-name">wplay</td><td class="num-col score-col">0,59987</td><td class="num-col">31</td><td class="num-col">602 000</td><td class="num-col">9 038 257</td></tr>
+          <tr><td>3</td><td class="merchant-name">stake</td><td class="num-col score-col">0,22085</td><td class="num-col">17</td><td class="num-col">104 000</td><td class="num-col">3 377 733</td></tr>
+          <tr class="row-licensed"><td>4</td><td class="merchant-name">rushbet</td><td class="num-col score-col">0,24357</td><td class="num-col">18</td><td class="num-col">183 000</td><td class="num-col">3 342 377</td></tr>
+          <tr class="row-licensed"><td>5</td><td class="merchant-name">sportium</td><td class="num-col score-col">0,05892</td><td class="num-col">5</td><td class="num-col">20 000</td><td class="num-col">998 993</td></tr>
+          <tr class="row-licensed"><td>6</td><td class="merchant-name">betsson</td><td class="num-col score-col">0,20292</td><td class="num-col">9</td><td class="num-col">96 000</td><td class="num-col">4 163 043</td></tr>
+          <tr><td>7</td><td class="merchant-name">1xbet</td><td class="num-col score-col">0,02853</td><td class="num-col">4</td><td class="num-col">12 000</td><td class="num-col">298 795</td></tr>
+          <tr class="row-licensed"><td>8</td><td class="merchant-name">codere</td><td class="num-col score-col">0,04851</td><td class="num-col">6</td><td class="num-col">16 000</td><td class="num-col">555 344</td></tr>
+          <tr class="row-licensed"><td>9</td><td class="merchant-name">yajuego</td><td class="num-col score-col">0,08945</td><td class="num-col">9</td><td class="num-col">1 900</td><td class="num-col">1 413 140</td></tr>
+          <tr><td>10</td><td class="merchant-name">1win</td><td class="num-col score-col">0,03707</td><td class="num-col">6</td><td class="num-col">37 000</td><td class="num-col">61 414</td></tr>
+          <tr class="row-licensed"><td>11</td><td class="merchant-name">bwin</td><td class="num-col score-col">0,05944</td><td class="num-col">7</td><td class="num-col">61 000</td><td class="num-col">406 126</td></tr>
+          <tr class="row-licensed"><td>12</td><td class="merchant-name">apostar</td><td class="num-col score-col">0,03210</td><td class="num-col">6</td><td class="num-col">25 000</td><td class="num-col">156 750</td></tr>
+          <tr class="row-licensed"><td>13</td><td class="merchant-name">betano</td><td class="num-col score-col">0,15881</td><td class="num-col">23</td><td class="num-col">75 000</td><td class="num-col">763 519</td></tr>
+          <tr class="row-licensed"><td>14</td><td class="merchant-name">luckia</td><td class="num-col score-col">0,03461</td><td class="num-col">5</td><td class="num-col">18 000</td><td class="num-col">280 982</td></tr>
+          <tr class="row-licensed"><td>15</td><td class="merchant-name">rivalo</td><td class="num-col score-col">0,00731</td><td class="num-col">1</td><td class="num-col">22 000</td><td class="num-col">64 194</td></tr>
+          <tr class="row-licensed"><td>16</td><td class="merchant-name">zamba</td><td class="num-col score-col">0,02213</td><td class="num-col">4</td><td class="num-col">19 000</td><td class="num-col">56 250</td></tr>
+          <tr><td>17</td><td class="merchant-name">mostbet</td><td class="num-col score-col">0,00132</td><td class="num-col">1</td><td class="num-col">5 500</td><td class="num-col"><span class="cell-flag">924</span></td></tr>
+          <tr><td>18</td><td class="merchant-name">melbet</td><td class="num-col score-col">0,02351</td><td class="num-col">1</td><td class="num-col">2 400</td><td class="num-col">691 548</td></tr>
+          <tr><td>19</td><td class="merchant-name">topacio</td><td class="num-col score-col">0,00233</td><td class="num-col">1</td><td class="num-col">3 200</td><td class="num-col">47 851</td></tr>
+          <tr><td>20</td><td class="merchant-name">brazino777</td><td class="num-col score-col">0,03676</td><td class="num-col">1</td><td class="num-col">2 100</td><td class="num-col">1 092 845</td></tr>
+          <tr><td>21</td><td class="merchant-name">pinnacle</td><td class="num-col score-col">0,00226</td><td class="num-col">1</td><td class="num-col">7 800</td><td class="num-col">13 041</td></tr>
+          <tr><td>22</td><td class="merchant-name">william hill</td><td class="num-col score-col">0,00145</td><td class="num-col">1</td><td class="num-col">5 600</td><td class="num-col">4 254</td></tr>
+          <tr><td>23</td><td class="merchant-name">bet365</td><td class="num-col score-col">0,00246</td><td class="num-col">1</td><td class="num-col">4 300</td><td class="num-col">44 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FOREX -->
+    <div class="ranking-card">
+      <div class="ranking-card-title">📈 Forex Merchant Ranking</div>
+      <table class="ranking-table" style="margin-top:0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Merchant</th>
+            <th class="num-col">Total Score</th>
+            <th class="num-col">Google Trends</th>
+            <th class="num-col">Ahrefs Keys</th>
+            <th class="num-col">Similarweb</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td class="merchant-name">iq option</td><td class="num-col score-col">0,71933</td><td class="num-col">20</td><td class="num-col">8 000</td><td class="num-col">186 720</td></tr>
+          <tr><td>2</td><td class="merchant-name">quotex</td><td class="num-col score-col">0,55052</td><td class="num-col">18</td><td class="num-col">6 700</td><td class="num-col">40 379</td></tr>
+          <tr><td>3</td><td class="merchant-name">deriv</td><td class="num-col score-col">0,49469</td><td class="num-col">19</td><td class="num-col">4 600</td><td class="num-col">175 785</td></tr>
+          <tr><td>4</td><td class="merchant-name">exness</td><td class="num-col score-col">0,43030</td><td class="num-col">32</td><td class="num-col">3 300</td><td class="num-col">49 707</td></tr>
+          <tr><td>5</td><td class="merchant-name">xm</td><td class="num-col score-col">0,38355</td><td class="num-col">13</td><td class="num-col">3 500</td><td class="num-col">166 616</td></tr>
+          <tr><td>6</td><td class="merchant-name">etoro</td><td class="num-col score-col">0,35508</td><td class="num-col">1</td><td class="num-col">800</td><td class="num-col">588 024</td></tr>
+          <tr><td>7</td><td class="merchant-name">fundednext</td><td class="num-col score-col">0,30275</td><td class="num-col">5</td><td class="num-col">3 700</td><td class="num-col">82 320</td></tr>
+          <tr><td>8</td><td class="merchant-name">interactive brokers</td><td class="num-col score-col">0,28612</td><td class="num-col">12</td><td class="num-col">2 900</td><td class="num-col">61 893</td></tr>
+          <tr><td>9</td><td class="merchant-name">binomo</td><td class="num-col score-col">0,24317</td><td class="num-col">5</td><td class="num-col">2 400</td><td class="num-col">124 847</td></tr>
+          <tr><td>10</td><td class="merchant-name">pocket option</td><td class="num-col score-col">0,23545</td><td class="num-col">8</td><td class="num-col">2 600</td><td class="num-col">48 578</td></tr>
+          <tr><td>11</td><td class="merchant-name">capital</td><td class="num-col score-col">0,22095</td><td class="num-col">1</td><td class="num-col">3 300</td><td class="num-col">20 413</td></tr>
+          <tr><td>12</td><td class="merchant-name">funding pips</td><td class="num-col score-col">0,17422</td><td class="num-col">3</td><td class="num-col">1 600</td><td class="num-col">112 447</td></tr>
+          <tr><td>13</td><td class="merchant-name">iqoption</td><td class="num-col score-col">0,15591</td><td class="num-col">2</td><td class="num-col">800</td><td class="num-col">186 720</td></tr>
+          <tr><td>14</td><td class="merchant-name">weltrade</td><td class="num-col score-col">0,15155</td><td class="num-col">7</td><td class="num-col">1 200</td><td class="num-col">68 061</td></tr>
+          <tr><td>15</td><td class="merchant-name">vantage</td><td class="num-col score-col">0,12741</td><td class="num-col">7</td><td class="num-col">700</td><td class="num-col">82 033</td></tr>
+          <tr><td>16</td><td class="merchant-name">xtb</td><td class="num-col score-col">0,10722</td><td class="num-col">1</td><td class="num-col">500</td><td class="num-col">140 523</td></tr>
+          <tr><td>17</td><td class="merchant-name">ftmo</td><td class="num-col score-col">0,09781</td><td class="num-col">2</td><td class="num-col">700</td><td class="num-col">85 449</td></tr>
+          <tr><td>18</td><td class="merchant-name">oanda</td><td class="num-col score-col">0,07179</td><td class="num-col">2</td><td class="num-col">700</td><td class="num-col">34 619</td></tr>
+          <tr><td>19</td><td class="merchant-name">ninjatrader</td><td class="num-col score-col">0,07016</td><td class="num-col">2</td><td class="num-col">700</td><td class="num-col">31 434</td></tr>
+          <tr><td>20</td><td class="merchant-name">roboforex</td><td class="num-col score-col">0,06734</td><td class="num-col">1</td><td class="num-col">500</td><td class="num-col">62 613</td></tr>
+          <tr><td>21</td><td class="merchant-name">fbs</td><td class="num-col score-col">0,06579</td><td class="num-col">1</td><td class="num-col">900</td><td class="num-col">10 699</td></tr>
+          <tr><td>22</td><td class="merchant-name">litefinance</td><td class="num-col score-col">0,05768</td><td class="num-col">1</td><td class="num-col">800</td><td class="num-col">7 073</td></tr>
+          <tr><td>23</td><td class="merchant-name">ic markets</td><td class="num-col score-col">0,05371</td><td class="num-col">1</td><td class="num-col">400</td><td class="num-col">48 218</td></tr>
+          <tr><td>24</td><td class="merchant-name">libertex</td><td class="num-col score-col">0,04755</td><td class="num-col">1</td><td class="num-col">600</td><td class="num-col">11 735</td></tr>
+          <tr><td>25</td><td class="merchant-name">olymp trade</td><td class="num-col score-col">0,03120</td><td class="num-col">1</td><td class="num-col">350</td><td class="num-col">10 353</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider"></div>
 
 <!-- ==================== PSE ==================== -->
 <div class="section-block" id="pse">
