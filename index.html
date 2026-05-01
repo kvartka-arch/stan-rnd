@@ -84,7 +84,7 @@
   .toc-bar {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 10px 48px;
+    padding: 10px 32px;
     display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
   }
   .toc-bar a {
@@ -99,7 +99,7 @@
   }
   .toc-bar a:hover { background: var(--purple-light); color: var(--purple); border-color: var(--purple-mid); }
   /* MAIN CONTENT */
-  .content { padding: 36px 48px; max-width: 1100px; }
+  .content { padding: 28px 32px; max-width: min(96vw, 1700px); width: 100%; }
   /* SECTION HEADERS */
   .section-label {
     display: inline-block;
@@ -190,8 +190,7 @@
     vertical-align: middle;
     text-align: center;
     border-right: 2px solid var(--purple-light);
-    min-width: 160px;
-    max-width: 180px;
+    width: 17%;
   }
   td.merchant-cell {
     font-weight: 600;
@@ -357,44 +356,72 @@
     border-top: 1px solid #c4b5fd;
   }
   .pattern-text { font-size: 12.5px; color: var(--graphite); }
-  /* DATA QUALITY */
-  .dq-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-  }
-  .dq-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 6px 0;
-    font-size: 12.5px;
-    color: var(--graphite);
-    border-bottom: 1px solid var(--gray-light);
-  }
-  .dq-item:last-child { border-bottom: none; }
-  .dq-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--purple);
-    margin-top: 5px; flex-shrink: 0;
-  }
   /* PROVIDER PAYMENT METHOD TABLE */
   .ppm-table td.pm-cell .badge-wrap { flex-direction: row; }
   /* GRID FOR CARDS */
   .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 800px) { .cards-grid { grid-template-columns: 1fr; } .finding-body { grid-template-columns: 1fr; } }
   .section-block { margin-bottom: 48px; }
-  /* Small note */
-  .data-note {
-    font-size: 11px;
-    color: var(--gray);
+  /* FIELD GROUPS in Findings */
+  .field-groups {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 0;
+    flex-direction: column;
+    gap: 8px;
     background: var(--gray-light);
-    padding: 6px 12px;
-    border-radius: 6px;
-    margin-bottom: 14px;
-    display: inline-block;
+    border-radius: 8px;
+    padding: 14px 16px;
   }
+  .field-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .field-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: center;
+    margin-top: 1px;
+  }
+  .field-group.core .field-group-label { background: var(--purple); color: white; }
+  .field-group.common .field-group-label { background: #ddd6fe; color: #4c1d95; }
+  .field-group.additional .field-group-label { background: white; color: var(--gray); border: 1px solid var(--border); }
+  .badge-core {
+    background: var(--purple); color: white;
+    padding: 3px 10px; border-radius: 5px;
+    font-size: 11.5px; font-weight: 700;
+    border: 1px solid var(--purple);
+  }
+  .badge-common {
+    background: #ede9fc; color: #4c1d95;
+    padding: 3px 9px; border-radius: 5px;
+    font-size: 11.5px; font-weight: 600;
+    border: 1px solid #c4b5fd;
+  }
+  .badge-additional {
+    background: white; color: var(--gray);
+    padding: 3px 9px; border-radius: 5px;
+    font-size: 11.5px; font-weight: 500;
+    border: 1px solid var(--border);
+  }
+  .findings-legend {
+    font-size: 11.5px; color: var(--gray);
+    display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
+    margin-bottom: 18px;
+    padding: 9px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
 </style>
 </head>
 <body>
@@ -424,7 +451,6 @@
   <a href="#merchant-coverage">Merchant Coverage</a>
   <a href="#provider-pm">Provider PM Summary</a>
   <a href="#findings">Findings</a>
-  <a href="#dq">Data Quality</a>
 </div>
 
 <div class="content">
@@ -438,8 +464,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:170px">Provider</th>
-          <th style="width:120px">Merchant</th>
+          <th style="width:17%">Provider</th>
+          <th style="width:13%">Merchant</th>
           <th>Merchant Side</th>
           <th>Provider Side</th>
         </tr>
@@ -560,8 +586,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:170px">Provider</th>
-          <th style="width:130px">Merchant</th>
+          <th style="width:17%">Provider</th>
+          <th style="width:13%">Merchant</th>
           <th>Merchant Side</th>
           <th>Provider Side</th>
         </tr>
@@ -668,8 +694,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:170px">Provider</th>
-          <th style="width:120px">Merchant</th>
+          <th style="width:17%">Provider</th>
+          <th style="width:13%">Merchant</th>
           <th>Merchant Side</th>
           <th>Provider Side</th>
         </tr>
@@ -729,8 +755,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:170px">Provider</th>
-          <th style="width:120px">Merchant</th>
+          <th style="width:17%">Provider</th>
+          <th style="width:13%">Merchant</th>
           <th>Merchant Side</th>
           <th>Provider Side</th>
         </tr>
@@ -793,8 +819,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:170px">Provider</th>
-          <th style="width:120px">Merchant</th>
+          <th style="width:17%">Provider</th>
+          <th style="width:13%">Merchant</th>
           <th>Merchant Side</th>
           <th>Provider Side</th>
         </tr>
@@ -846,8 +872,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:170px">Provider</th>
-          <th style="width:120px">Merchant</th>
+          <th style="width:17%">Provider</th>
+          <th style="width:13%">Merchant</th>
           <th>Merchant Side</th>
           <th>Provider Side</th>
         </tr>
@@ -885,8 +911,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:170px">Provider</th>
-          <th style="width:120px">Merchant</th>
+          <th style="width:17%">Provider</th>
+          <th style="width:13%">Merchant</th>
           <th>Merchant Side</th>
           <th>Provider Side</th>
         </tr>
@@ -1017,7 +1043,7 @@
     <table>
       <thead>
         <tr>
-          <th style="width:150px">Merchant</th>
+          <th style="width:15%">Merchant</th>
           <th>Payment Methods Found</th>
         </tr>
       </thead>
@@ -1085,7 +1111,7 @@
     <table>
       <thead>
         <tr>
-          <th style="width:220px">Provider</th>
+          <th style="width:22%">Provider</th>
           <th>Payment Methods</th>
         </tr>
       </thead>
@@ -1176,38 +1202,52 @@
 <!-- ==================== PAYMENT METHOD FINDINGS ==================== -->
 <div class="section-block" id="findings">
   <div class="big-section-title">Payment Method Findings</div>
-  <div class="big-section-sub">Field analysis per payment method — based only on observed data. Helps identify the minimum field set needed to build a similar flow with minimal friction.</div>
+  <div class="big-section-sub">Field analysis per payment method — based only on observed data. Helps identify the minimum field set for each flow.</div>
+
+  <div class="findings-legend">
+    <strong style="color:var(--graphite);font-size:11px;letter-spacing:0.5px;text-transform:uppercase">Legend:</strong>
+    <span class="legend-item"><span class="badge-core" style="font-size:10.5px;padding:2px 8px">Core</span> appears in all or almost all flows</span>
+    <span class="legend-item"><span class="badge-common" style="font-size:10.5px;padding:2px 8px">Common</span> appears in many but not all flows</span>
+    <span class="legend-item"><span class="badge-additional" style="font-size:10.5px;padding:2px 8px">Additional</span> provider-specific or flow-specific only</span>
+  </div>
 
   <!-- PSE -->
   <div class="finding-card">
     <div class="finding-header">🏦 PSE</div>
     <div class="finding-body">
-      <div class="finding-block">
-        <div class="finding-block-title">Fields consistently requested (merchant side)</div>
-        <ul class="finding-list">
-          <li>Full name — appears across most merchant forms</li>
-          <li>Document number — requested by majority of merchants</li>
-          <li>Email — present in most PSE merchant forms</li>
-          <li>Phone number — common, especially where no PSP</li>
-          <li>Bank — required by Direct pay and 4bill merchant flows</li>
-        </ul>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Fields sometimes requested (merchant side)</div>
-        <ul class="finding-list sometimes">
-          <li>Document type — mainly smartfastpay and starpago flows</li>
-          <li>City — only pay.trx-point.com (megapari, quotex)</li>
-          <li>Address — direct pay and smartfastpay flows only</li>
-          <li>Account type — only co-payer.erjqport.com provider side</li>
-        </ul>
+      <div class="field-groups">
+        <div class="field-group core">
+          <span class="field-group-label">Core</span>
+          <div class="badge-wrap">
+            <span class="badge-core">Full name</span>
+            <span class="badge-core">Document number</span>
+            <span class="badge-core">Email</span>
+          </div>
+        </div>
+        <div class="field-group common">
+          <span class="field-group-label">Common</span>
+          <div class="badge-wrap">
+            <span class="badge-common">Phone number</span>
+            <span class="badge-common">Document type</span>
+            <span class="badge-common">Bank</span>
+          </div>
+        </div>
+        <div class="field-group additional">
+          <span class="field-group-label">Additional</span>
+          <div class="badge-wrap">
+            <span class="badge-additional">Address</span>
+            <span class="badge-additional">City</span>
+            <span class="badge-additional">Account type</span>
+          </div>
+        </div>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Most PSE merchant forms request Full name + one identity field (Document number or Email). The 4bill-mediated merchants (bc.game, Brazino 777) show empty merchant sides — the merchant appears not to collect extra fields, delegating entirely to the provider. Direct integration merchants (1xbet, 20bet) ask for Bank and document info themselves.</p>
+        <p class="pattern-text">Most PSE merchant forms request Full name + one identity field (Document number or Email). The 4bill-mediated merchants (bc.game, Brazino 777) show empty merchant sides — they delegate entirely to the provider. Direct integration merchants (1xbet, 20bet) ask for Bank and document fields themselves.</p>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">Provider APIs consistently require Bank + identity fields (Full name, Document type, Document number, Email, Phone number). This set appears in supefina.net, smartfastpay.com, and starpago flows. Simpler providers (4bill) only ask for Full name + Phone number + Email on their API side.</p>
+        <p class="pattern-text">Provider APIs consistently require Bank + identity fields (Full name, Document type, Document number, Email, Phone number). This set appears in supefina.net, smartfastpay.com, and starpago flows. Simpler providers (4bill) only ask for Full name + Phone number + Email.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
@@ -1218,7 +1258,7 @@
           <span class="badge-min">Document type</span>
           <span class="badge-min">Document number</span>
         </div>
-        <div class="conclusion-text">To build a low-friction PSE flow, collect Bank, Full name, Email, Document type, and Document number. Bank selection is essential — PSE routes the payment based on the user's bank. Phone number and Address should be added only if the specific PSP requires them. City appears to be provider-specific and is not a core field.</div>
+        <div class="conclusion-text">To build a low-friction PSE flow, collect Bank, Full name, Email, Document type, and Document number. Bank selection is essential — PSE routes the payment based on the user's bank. Phone number and Address should be added only if the specific PSP requires them. City appears provider-specific and is not a core field.</div>
       </div>
     </div>
   </div>
@@ -1227,21 +1267,29 @@
   <div class="finding-card">
     <div class="finding-header">📱 Nequi</div>
     <div class="finding-body">
-      <div class="finding-block">
-        <div class="finding-block-title">Fields consistently requested (merchant side)</div>
-        <ul class="finding-list">
-          <li>Full name — present in the majority of direct push merchant forms</li>
-          <li>Phone number — core to Nequi (phone-based wallet)</li>
-          <li>Document type — common in direct push flows</li>
-          <li>Document number — appears alongside document type</li>
-        </ul>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Fields sometimes requested (merchant side)</div>
-        <ul class="finding-list sometimes">
-          <li>Email — present in several but not all direct push forms</li>
-          <li>Screenshot / Comment — only in Nequi p2p (manual flow)</li>
-        </ul>
+      <div class="field-groups">
+        <div class="field-group core">
+          <span class="field-group-label">Core</span>
+          <div class="badge-wrap">
+            <span class="badge-core">Full name</span>
+            <span class="badge-core">Phone number</span>
+            <span class="badge-core">Document number</span>
+          </div>
+        </div>
+        <div class="field-group common">
+          <span class="field-group-label">Common</span>
+          <div class="badge-wrap">
+            <span class="badge-common">Document type</span>
+            <span class="badge-common">Email</span>
+          </div>
+        </div>
+        <div class="field-group additional">
+          <span class="field-group-label">Additional</span>
+          <div class="badge-wrap">
+            <span class="badge-additional">Screenshot</span>
+            <span class="badge-additional">Comment</span>
+          </div>
+        </div>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Merchant side pattern</div>
@@ -1249,7 +1297,7 @@
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">4bill and 4bill Payzen (QR) consistently ask for Full name + Phone number + Email via their API. TRX point asks for Document type (and sometimes Document number) on the provider side. Since Nequi is phone-linked, phone number appears critical at the API layer.</p>
+        <p class="pattern-text">4bill and 4bill Payzen (QR) consistently ask for Full name + Phone number + Email via their API. TRX point asks for Document type (and sometimes Document number) on the provider side. Since Nequi is phone-linked, Phone number appears critical at the API layer.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
@@ -1259,7 +1307,7 @@
           <span class="badge-min">Document type</span>
           <span class="badge-min">Document number</span>
         </div>
-        <div class="conclusion-text">For Nequi, Phone number is the core identifier — the wallet is phone-linked. Full name, Document type, and Document number appear consistently across flows. Email is useful but not universal. Avoid screenshot-based flows in production as they require manual processing.</div>
+        <div class="conclusion-text">For Nequi, Phone number is the core identifier — the wallet is phone-linked. Full name, Document type, and Document number appear consistently across flows. Email is useful but not universal. Avoid screenshot-based flows in production.</div>
       </div>
     </div>
   </div>
@@ -1268,22 +1316,25 @@
   <div class="finding-card">
     <div class="finding-header">💳 Bre-b</div>
     <div class="finding-body">
-      <div class="finding-block">
-        <div class="finding-block-title">Fields consistently requested (merchant side)</div>
-        <ul class="finding-list">
-          <li>Full name — present in the one merchant form with data (Jugabet via 4bill→cobre)</li>
-          <li>Phone number — present alongside Full name</li>
-        </ul>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Fields sometimes requested (merchant side)</div>
-        <ul class="finding-list sometimes">
-          <li>No additional fields observed — most rows show empty merchant sides</li>
-        </ul>
+      <div class="field-groups">
+        <div class="field-group core">
+          <span class="field-group-label">Core</span>
+          <div class="badge-wrap">
+            <span class="badge-core">Full name</span>
+            <span class="badge-core">Phone number</span>
+          </div>
+        </div>
+        <div class="field-group additional">
+          <span class="field-group-label">Additional</span>
+          <div class="badge-wrap">
+            <span class="badge-additional">Email</span>
+            <span class="badge-additional" style="font-style:italic;font-size:10.5px">provider API level only</span>
+          </div>
+        </div>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Bre-b data is sparse. Most merchant-side cells are empty, suggesting either the merchant collects data before hand-off or the flow is redirect-based. The only filled merchant side (Jugabet via 4bill→cobre) shows Full name + Phone number.</p>
+        <p class="pattern-text">Bre-b data is sparse. Most merchant-side cells are empty, suggesting either the merchant collects data before hand-off or the flow is redirect-based. The only filled merchant form (Jugabet via 4bill→cobre) shows Full name + Phone number.</p>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Provider side pattern</div>
@@ -1296,7 +1347,7 @@
           <span class="badge-min">Phone number</span>
           <span class="badge-min">Email</span>
         </div>
-        <div class="conclusion-text">Based on limited data, Full name + Phone number appear to be the core fields for Bre-b merchant flows. Email is likely needed at the provider API level (consistently requested by 4bill→cobre). Data coverage for this method is thin — treat these recommendations with caution.</div>
+        <div class="conclusion-text">Based on limited data, Full name + Phone number appear to be the core fields for Bre-b merchant flows. Email is likely needed at the provider API level. Data coverage for this method is thin — treat these recommendations with caution.</div>
       </div>
     </div>
   </div>
@@ -1305,24 +1356,34 @@
   <div class="finding-card">
     <div class="finding-header">🏛️ Bancolombia</div>
     <div class="finding-body">
-      <div class="finding-block">
-        <div class="finding-block-title">Fields consistently requested (merchant side)</div>
-        <ul class="finding-list">
-          <li>Full name — observed in Jugabet (4bill) and supefina/smartfastpay flows</li>
-          <li>Phone number — present in supefina and smartfastpay merchant forms</li>
-          <li>Email — present in supefina and smartfastpay merchant forms</li>
-        </ul>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Fields sometimes requested (merchant side)</div>
-        <ul class="finding-list sometimes">
-          <li>Document type / number — only smartfastpay and supefina merchant forms</li>
-          <li>Bank number, Screenshot, TX id, Comment — P2P (manual) flows only</li>
-        </ul>
+      <div class="field-groups">
+        <div class="field-group core">
+          <span class="field-group-label">Core</span>
+          <div class="badge-wrap">
+            <span class="badge-core">Full name</span>
+          </div>
+        </div>
+        <div class="field-group common">
+          <span class="field-group-label">Common</span>
+          <div class="badge-wrap">
+            <span class="badge-common">Phone number</span>
+            <span class="badge-common">Email</span>
+            <span class="badge-common">Document number</span>
+          </div>
+        </div>
+        <div class="field-group additional">
+          <span class="field-group-label">Additional</span>
+          <div class="badge-wrap">
+            <span class="badge-additional">Document type</span>
+            <span class="badge-additional">Bank number</span>
+            <span class="badge-additional">Screenshot</span>
+            <span class="badge-additional">TX id</span>
+          </div>
+        </div>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">4bill-mediated merchants (1win, Jugabet, Brazino777) show minimal or empty merchant sides. PSP-integrated providers (supefina, smartfastpay) request a richer set. P2P routes require manual proof (bank account number, screenshot), not suitable for automated flows.</p>
+        <p class="pattern-text">4bill-mediated merchants (1win, Jugabet, Brazino777) show minimal or empty merchant sides. PSP-integrated providers (supefina, smartfastpay) request a richer set. P2P routes require manual proof (bank account number, screenshot) — not suitable for automated flows.</p>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Provider side pattern</div>
@@ -1344,25 +1405,33 @@
   <div class="finding-card">
     <div class="finding-header">📲 Daviplata</div>
     <div class="finding-body">
-      <div class="finding-block">
-        <div class="finding-block-title">Fields consistently requested (merchant side)</div>
-        <ul class="finding-list">
-          <li>Full name — observed in direct integration (melbet via Direct PSE)</li>
-          <li>Phone number — core field for this phone-linked wallet</li>
-        </ul>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Fields sometimes requested (merchant side)</div>
-        <ul class="finding-list sometimes">
-          <li>Email — only in Direct PSE flow (melbet)</li>
-          <li>Document type / number — only in Direct PSE (melbet) and P2P (melbet)</li>
-          <li>Address — in Direct PSE flow</li>
-          <li>Screenshot / Comment — P2P manual flow</li>
-        </ul>
+      <div class="field-groups">
+        <div class="field-group core">
+          <span class="field-group-label">Core</span>
+          <div class="badge-wrap">
+            <span class="badge-core">Full name</span>
+          </div>
+        </div>
+        <div class="field-group common">
+          <span class="field-group-label">Common</span>
+          <div class="badge-wrap">
+            <span class="badge-common">Phone number</span>
+          </div>
+        </div>
+        <div class="field-group additional">
+          <span class="field-group-label">Additional</span>
+          <div class="badge-wrap">
+            <span class="badge-additional">Email</span>
+            <span class="badge-additional">Document type</span>
+            <span class="badge-additional">Document number</span>
+            <span class="badge-additional">Address</span>
+            <span class="badge-additional">Screenshot</span>
+          </div>
+        </div>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">4bill for Daviplata shows an empty merchant side — consistent with 4bill's pattern of delegating to its own API. Direct PSE integration (melbet) requests a full set of identity fields. api.lamapay.org/ p2p requests only Full name on the merchant side; the standalone P2P route for 1xbet requests Full name + Phone + Screenshot — a manual verification flow.</p>
+        <p class="pattern-text">4bill for Daviplata shows an empty merchant side — consistent with its pattern of delegating to its own API. Direct PSE integration (melbet) requests a full identity set. api.lamapay.org/ p2p requests only Full name; the standalone P2P route for 1xbet requests Full name + Phone + Screenshot — a manual verification flow.</p>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Provider side pattern</div>
@@ -1374,7 +1443,7 @@
           <span class="badge-min">Full name</span>
           <span class="badge-min">Phone number</span>
         </div>
-        <div class="conclusion-text">Daviplata is phone-linked — Phone number is the core identifier. Full name appears needed across all non-empty flows. Document fields and Address are provider-specific (Direct PSE / pagsmile). Start with Full name + Phone number and extend based on the provider chosen.</div>
+        <div class="conclusion-text">Daviplata is phone-linked — Phone number is the core identifier. Full name appears in all non-empty flows. Document fields and Address are provider-specific (Direct PSE / pagsmile). Start with Full name + Phone number and extend based on the provider chosen.</div>
       </div>
     </div>
   </div>
@@ -1383,27 +1452,31 @@
   <div class="finding-card">
     <div class="finding-header">📷 Tpaga (QR)</div>
     <div class="finding-body">
-      <div class="finding-block">
-        <div class="finding-block-title">Fields consistently requested (merchant side)</div>
-        <ul class="finding-list">
-          <li>Document type — present in both P2P merchant rows (1win and melbet)</li>
-          <li>Document number — present alongside document type</li>
-        </ul>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Fields sometimes requested (merchant side)</div>
-        <ul class="finding-list sometimes">
-          <li>Full name — only in melbet's P2P row (more complete form)</li>
-          <li>Email, Phone number, Address — only in melbet's P2P row</li>
-        </ul>
+      <div class="field-groups">
+        <div class="field-group core">
+          <span class="field-group-label">Core</span>
+          <div class="badge-wrap">
+            <span class="badge-core">Document type</span>
+            <span class="badge-core">Document number</span>
+          </div>
+        </div>
+        <div class="field-group additional">
+          <span class="field-group-label">Additional</span>
+          <div class="badge-wrap">
+            <span class="badge-additional">Full name</span>
+            <span class="badge-additional">Email</span>
+            <span class="badge-additional">Phone number</span>
+            <span class="badge-additional">Address</span>
+          </div>
+        </div>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Very limited data. Only P2P-routed merchants (1win and melbet) have observed merchant-side fields. 1win shows a minimal set (Document type + Document number), while melbet's form appears more complete. checkout.pagsmile.com / Binomo shows no fields on either side.</p>
+        <p class="pattern-text">Very limited data — only P2P-routed merchants (1win and melbet) have observed merchant-side fields. 1win shows a minimal set (Document type + Document number), while melbet's form is more complete. checkout.pagsmile.com / Binomo shows no fields on either side.</p>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">No provider-side fields observed in this payment method. checkout.pagsmile.com shows both sides empty for Tpaga (QR), which may indicate incomplete data capture at the time of research.</p>
+        <p class="pattern-text">No provider-side fields observed in this payment method. checkout.pagsmile.com shows both sides empty for Tpaga (QR), which may indicate incomplete data capture at research time.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
@@ -1411,7 +1484,7 @@
           <span class="badge-min">Document type</span>
           <span class="badge-min">Document number</span>
         </div>
-        <div class="conclusion-text">Based on limited data, Document type and Document number appear consistently for QR-based flows. However, Tpaga (QR) data coverage is very thin — treat this recommendation with caution and verify directly with the PSP before building.</div>
+        <div class="conclusion-text">Based on limited data, Document type and Document number appear consistently for QR-based flows. Tpaga (QR) data coverage is very thin — treat this recommendation with caution and verify directly with the PSP before building.</div>
       </div>
     </div>
   </div>
@@ -1420,26 +1493,27 @@
   <div class="finding-card">
     <div class="finding-header">🔄 Movii (PSE)</div>
     <div class="finding-body">
-      <div class="finding-block">
-        <div class="finding-block-title">Fields consistently requested</div>
-        <ul class="finding-list">
-          <li>Full name — observed in Direct PSE (melbet) form</li>
-          <li>Email — present in Direct PSE flow</li>
-          <li>Phone number — present in Direct PSE flow</li>
-          <li>Document type / number — in Direct PSE (melbet) form</li>
-        </ul>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Notes</div>
-        <ul class="finding-list sometimes">
-          <li>Only 2 merchant rows observed — very limited coverage</li>
-          <li>4bill (1win) shows empty merchant side, provider side Full name + Phone + Email</li>
-          <li>Appears to combine PSE routing with wallet-layer processing</li>
-        </ul>
+      <div class="field-groups">
+        <div class="field-group core">
+          <span class="field-group-label">Core</span>
+          <div class="badge-wrap">
+            <span class="badge-core">Full name</span>
+            <span class="badge-core">Email</span>
+            <span class="badge-core">Phone number</span>
+          </div>
+        </div>
+        <div class="field-group additional">
+          <span class="field-group-label">Additional</span>
+          <div class="badge-wrap">
+            <span class="badge-additional">Document type</span>
+            <span class="badge-additional">Document number</span>
+            <span class="badge-additional">Address</span>
+          </div>
+        </div>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">The 4bill route shows no merchant-side fields. The Direct PSE route (melbet) shows a full identity set including Address. Movii (PSE) appears to behave similarly to standard PSE in terms of required data.</p>
+        <p class="pattern-text">Only 2 merchant rows observed. The 4bill route shows no merchant-side fields. The Direct PSE route (melbet) shows a full identity set including Address. Movii (PSE) appears to behave similarly to standard PSE in terms of required data.</p>
       </div>
       <div class="finding-block">
         <div class="finding-block-title">Provider side pattern</div>
@@ -1452,25 +1526,9 @@
           <span class="badge-min">Email</span>
           <span class="badge-min">Phone number</span>
         </div>
-        <div class="conclusion-text">Extremely limited data for Movii (PSE) — only 2 providers and 2 merchants observed. Treat PSE field requirements as a baseline, then adjust based on provider. The 4bill API set (Full name + Phone + Email) appears as the practical minimum for this method.</div>
+        <div class="conclusion-text">Extremely limited data — only 2 providers and 2 merchants observed. Treat PSE field requirements as a baseline, then adjust based on provider. The 4bill API set (Full name + Phone + Email) appears as the practical minimum for this method.</div>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ==================== DATA QUALITY NOTES ==================== -->
-<div class="section-block" id="dq">
-  <div class="big-section-title">Data Quality Notes</div>
-  <div class="big-section-sub">Notes on normalization and data limitations.</div>
-  <div class="dq-card">
-    <div class="dq-item"><div class="dq-dot"></div><div>Provider names were normalized where clearly the same: <strong>h5.supefina.net</strong> and <strong>supefina.net</strong> → <strong>supefina.net</strong>; <strong>checkout.smartfastpay.com</strong>, <strong>Smartfastpay</strong> → <strong>smartfastpay.com</strong>; <strong>p2p</strong> (standalone, no domain) → <strong>P2P</strong>. Provider names containing a domain are never replaced with a generic label — <strong>api.lamapay.org/ p2p</strong> remains its own distinct provider.</div></div>
-    <div class="dq-item"><div class="dq-dot"></div><div>Merchant names were normalized in summary tables only: <strong>bc game</strong> / <strong>Bc game</strong> → <strong>bc.game</strong>; <strong>1win (push)</strong> → <strong>1win</strong>; <strong>Brazino777</strong> / <strong>Brazino 777</strong> → <strong>Brazino 777</strong>; <strong>Melbet</strong> → <strong>melbet</strong>. Original names are preserved in detailed tables.</div></div>
-    <div class="dq-item"><div class="dq-dot"></div><div>Field names were normalized for consistency: spelling variants (Adress → Address, document tyoe → Document type), case variants (email → Email, phone → Phone number), and Spanish variants (Numero de celular → Phone number, Mail → Email) were unified.</div></div>
-    <div class="dq-item"><div class="dq-dot"></div><div>The cell value "CC" in the Nequi / 4bill / 1win merchant side was treated as <strong>Document number</strong>, as CC (Cédula de Ciudadanía) is a document identifier, not a standalone field name.</div></div>
-    <div class="dq-item"><div class="dq-dot"></div><div>Merged cells in the spreadsheet were resolved: where a provider cell spanned multiple rows, the provider value was applied to all covered rows. The same was done for provider-side cells that were merged across multiple merchant rows.</div></div>
-    <div class="dq-item"><div class="dq-dot"></div><div>This analysis is based solely on observed fields in the spreadsheet. No external knowledge, compliance assumptions, or inferred requirements were added. Some payment methods (Bre-b, Tpaga QR, Movii PSE) have very limited data and their findings should be treated as preliminary.</div></div>
   </div>
 </div>
 
