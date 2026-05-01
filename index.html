@@ -80,24 +80,52 @@
     color: rgba(255,255,255,0.8);
     letter-spacing: 0.3px;
   }
-  /* TOC */
+  /* STICKY NAV */
   .toc-bar {
-    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 10px 32px;
-    display: flex; gap: 6px; flex-wrap: wrap; align-items: center;
+    box-shadow: 0 2px 12px rgba(28, 26, 46, 0.07);
+    padding: 7px 32px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .toc-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--purple);
+    white-space: nowrap;
+    padding-right: 6px;
+    border-right: 1px solid var(--border);
+    margin-right: 2px;
   }
   .toc-bar a {
-    font-size: 11.5px;
+    font-size: 11px;
     color: var(--gray);
     text-decoration: none;
-    padding: 3px 10px;
+    padding: 3px 9px;
     border-radius: 20px;
     border: 1px solid var(--border);
-    transition: all 0.15s;
+    transition: background 0.13s, color 0.13s, border-color 0.13s;
     white-space: nowrap;
   }
-  .toc-bar a:hover { background: var(--purple-light); color: var(--purple); border-color: var(--purple-mid); }
+  .toc-bar a:hover {
+    background: var(--purple-light);
+    color: var(--purple);
+    border-color: var(--purple-mid);
+  }
+  /* Scroll offset so anchors land below the sticky bar */
+  .section-block, .doc-header {
+    scroll-margin-top: 52px;
+  }
   /* MAIN CONTENT */
   .content { padding: 28px 32px; max-width: min(96vw, 1700px); width: 100%; }
   /* SECTION HEADERS */
@@ -362,6 +390,73 @@
   .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 800px) { .cards-grid { grid-template-columns: 1fr; } .finding-body { grid-template-columns: 1fr; } }
   .section-block { margin-bottom: 48px; }
+  /* COMPACT PROVIDER COVERAGE GRID */
+  .cov-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (min-width: 1300px) { .cov-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 900px)  { .cov-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px)  { .cov-grid { grid-template-columns: 1fr; } }
+  .cov-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 11px 13px 10px;
+    box-shadow: 0 1px 6px rgba(108,71,216,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .cov-name {
+    font-family: 'Consolas', 'SF Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--purple);
+    word-break: break-all;
+    line-height: 1.35;
+    display: flex; align-items: flex-start; gap: 6px;
+  }
+  .cov-name::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--purple);
+    border-radius: 50%;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .cov-stats {
+    font-size: 10.5px;
+    color: var(--gray);
+    letter-spacing: 0.2px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+    padding-left: 12px;
+  }
+  .cov-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+    padding-left: 12px;
+  }
+  .cov-tag {
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--gray-light);
+    color: var(--graphite);
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .cov-merchants {
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.4;
+  }
   /* FIELD GROUPS in Findings */
   .field-groups {
     grid-column: 1 / -1;
@@ -438,8 +533,9 @@
   </div>
 </div>
 
-<!-- TOC -->
-<div class="toc-bar">
+<!-- STICKY NAV -->
+<nav class="toc-bar">
+  <span class="toc-label">Jump to section</span>
   <a href="#pse">PSE</a>
   <a href="#nequi">Nequi</a>
   <a href="#breb">Bre-b</a>
@@ -449,9 +545,8 @@
   <a href="#movii">Movii (PSE)</a>
   <a href="#provider-coverage">Provider Coverage</a>
   <a href="#merchant-coverage">Merchant Coverage</a>
-  <a href="#provider-pm">Provider PM Summary</a>
   <a href="#findings">Findings</a>
-</div>
+</nav>
 
 <div class="content">
 
@@ -940,96 +1035,154 @@
 <!-- ==================== PROVIDER COVERAGE SUMMARY ==================== -->
 <div class="section-block" id="provider-coverage">
   <div class="big-section-title">Provider Coverage Summary</div>
-  <div class="big-section-sub">Each provider shown once, with all payment methods and merchants where observed.</div>
+  <div class="big-section-sub">Each provider shown once · sorted by payment method count, then by unique merchant count.</div>
 
-  <div class="cards-grid">
-    <div class="provider-card">
-      <div class="provider-card-name">pay.trx-point.com</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">megapari, quotex, melbet, pocketoption</span></div>
+  <div class="cov-grid">
+
+    <!-- 1. 4bill — 5 methods · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">4bill</div>
+      <div class="cov-stats">5 methods · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">1win, bc.game, Brazino 777</span></div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, Jugabet, Brazino 777</span></div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1win, Jugabet, Brazino777</span></div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1win</span></div>
+      <div class="cov-row"><span class="cov-tag">Movii (PSE)</span><span class="cov-merchants">1win</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">co-payer.erjqport.com</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">Jugabet, bc.game, 20bet</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Nequi</span><span class="pm-merchants">20bet</span></div>
+
+    <!-- 2. P2P — 3 methods · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">P2P</div>
+      <div class="cov-stats">3 methods · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1xbet, betwinner</span></div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
+      <div class="cov-row"><span class="cov-tag">Tpaga (QR)</span><span class="cov-merchants">1win, melbet</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">4bill</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">1win, bc.game, Brazino 777</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Nequi</span><span class="pm-merchants">1win, Jugabet, Brazino 777</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Bancolombia</span><span class="pm-merchants">1win, Jugabet, Brazino777</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Daviplata</span><span class="pm-merchants">1win</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Movii (PSE)</span><span class="pm-merchants">1win</span></div>
+
+    <!-- 3. co-payer.erjqport.com — 2 methods · 3 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">co-payer.erjqport.com</div>
+      <div class="cov-stats">2 methods · 3 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">Jugabet, bc.game, 20bet</span></div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">20bet</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">smartfastpay.com</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">betwinner, Binomo</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Bancolombia</span><span class="pm-merchants">betwinner</span></div>
+
+    <!-- 4. smartfastpay.com — 2 methods · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">smartfastpay.com</div>
+      <div class="cov-stats">2 methods · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">betwinner, Binomo</span></div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">betwinner</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">supefina.net</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">bc.game</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Bancolombia</span><span class="pm-merchants">bc.game</span></div>
+
+    <!-- 5. checkout.pagsmile.com — 2 methods · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">checkout.pagsmile.com</div>
+      <div class="cov-stats">2 methods · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">Binomo</span></div>
+      <div class="cov-row"><span class="cov-tag">Tpaga (QR)</span><span class="cov-merchants">Binomo</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">pro.h5.starpago.com</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">bc.game</span></div>
+
+    <!-- 6. Direct PSE — 2 methods · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">Direct PSE</div>
+      <div class="cov-stats">2 methods · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">melbet</span></div>
+      <div class="cov-row"><span class="cov-tag">Movii (PSE)</span><span class="cov-merchants">melbet</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">payretailers.com</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">pocketoption</span></div>
+
+    <!-- 7. supefina.net — 2 methods · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">supefina.net</div>
+      <div class="cov-stats">2 methods · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">bc.game</span></div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">bc.game</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">Direct pay (without PSP)</div>
-      <div class="pm-method-row"><span class="pm-method-tag">PSE</span><span class="pm-merchants">1xbet, 20bet</span></div>
+
+    <!-- 8. Direct pay (push) (without PSP) — 1 method · 5 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">Direct pay (push) (without PSP)</div>
+      <div class="cov-stats">1 method · 5 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, 1xbet, Jugabet, melbet, Binomo</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">Direct pay (push) (without PSP)</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Nequi</span><span class="pm-merchants">1win, 1xbet, Jugabet, melbet, Binomo</span></div>
+
+    <!-- 9. 4bill -> cobre — 1 method · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">4bill -&gt; cobre</div>
+      <div class="cov-stats">1 method · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">Jugabet, bc.game, Brazino777, Quotex</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">4bill Payzen (QR)</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Nequi</span><span class="pm-merchants">Jugabet, bc.game</span></div>
+
+    <!-- 10. pay.trx-point.com — 1 method · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">pay.trx-point.com</div>
+      <div class="cov-stats">1 method · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">megapari, quotex, melbet, pocketoption</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">TRX point</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Nequi</span><span class="pm-merchants">betwinner, megapari, quotex</span></div>
+
+    <!-- 11. TRX point — 1 method · 3 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">TRX point</div>
+      <div class="cov-stats">1 method · 3 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">betwinner, megapari, quotex</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">Nequi p2p</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Nequi</span><span class="pm-merchants">1xbet</span></div>
+
+    <!-- 12. 4bill Payzen (QR) — 1 method · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">4bill Payzen (QR)</div>
+      <div class="cov-stats">1 method · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">Jugabet, bc.game</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">Bre B h2h p2p</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Bre-b</span><span class="pm-merchants">1win</span></div>
+
+    <!-- 13. Direct pay (without PSP) — 1 method · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">Direct pay (without PSP)</div>
+      <div class="cov-stats">1 method · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">1xbet, 20bet</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">4bill -&gt; cobre</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Bre-b</span><span class="pm-merchants">Jugabet, bc.game, Brazino777, Quotex</span></div>
+
+    <!-- 14. topup.com.co — 1 method · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">topup.com.co</div>
+      <div class="cov-stats">1 method · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win, Binomo</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">topup.com.co</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Bre-b</span><span class="pm-merchants">1win, Binomo</span></div>
+
+    <!-- 15. api.lamapay.org/ p2p — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">api.lamapay.org/ p2p</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">api.lamapay.org/ p2p</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Daviplata</span><span class="pm-merchants">1xbet</span></div>
+
+    <!-- 16. Bre B h2h p2p — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">Bre B h2h p2p</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">P2P</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Bancolombia</span><span class="pm-merchants">1xbet, betwinner</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Daviplata</span><span class="pm-merchants">1xbet</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Tpaga (QR)</span><span class="pm-merchants">1win, melbet</span></div>
+
+    <!-- 17. Nequi p2p — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">Nequi p2p</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1xbet</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">checkout.pagsmile.com</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Daviplata</span><span class="pm-merchants">Binomo</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Tpaga (QR)</span><span class="pm-merchants">Binomo</span></div>
+
+    <!-- 18. payretailers.com — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">payretailers.com</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">pocketoption</span></div>
     </div>
-    <div class="provider-card">
-      <div class="provider-card-name">Direct PSE</div>
-      <div class="pm-method-row"><span class="pm-method-tag">Daviplata</span><span class="pm-merchants">melbet</span></div>
-      <div class="pm-method-row"><span class="pm-method-tag">Movii (PSE)</span><span class="pm-merchants">melbet</span></div>
+
+    <!-- 19. pro.h5.starpago.com — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">pro.h5.starpago.com</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">bc.game</span></div>
     </div>
+
   </div>
 </div>
 
@@ -1095,102 +1248,6 @@
         <tr>
           <td class="merchant-cell">pocketoption</td>
           <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span></div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ==================== PROVIDER PAYMENT METHODS SUMMARY ==================== -->
-<div class="section-block" id="provider-pm">
-  <div class="big-section-title">Provider Payment Methods Summary</div>
-  <div class="big-section-sub">Which payment methods each provider supports. No merchant or field data shown here.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:22%">Provider</th>
-          <th>Payment Methods</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">pay.trx-point.com</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">co-payer.erjqport.com</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">4bill</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bancolombia</span><span class="badge badge-pm">Daviplata</span><span class="badge badge-pm">Movii (PSE)</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">smartfastpay.com</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Bancolombia</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">supefina.net</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Bancolombia</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">pro.h5.starpago.com</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">payretailers.com</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">Direct pay (without PSP)</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">Direct pay (push) (without PSP)</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Nequi</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">4bill Payzen (QR)</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Nequi</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">TRX point</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Nequi</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">Nequi p2p</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Nequi</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">Bre B h2h p2p</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Bre-b</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">4bill -&gt; cobre</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Bre-b</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">topup.com.co</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Bre-b</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">api.lamapay.org/ p2p</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Daviplata</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">P2P</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Bancolombia</span><span class="badge badge-pm">Daviplata</span><span class="badge badge-pm">Tpaga (QR)</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">checkout.pagsmile.com</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Daviplata</span><span class="badge badge-pm">Tpaga (QR)</span></div></td>
-        </tr>
-        <tr>
-          <td style="font-family:monospace;font-size:11.5px;font-weight:600">Direct PSE</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">Daviplata</span><span class="badge badge-pm">Movii (PSE)</span></div></td>
         </tr>
       </tbody>
     </table>
