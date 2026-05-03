@@ -755,6 +755,90 @@
     font-style: italic;
   }
 
+
+  /* ── Compact Findings Grid ── */
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 14px;
+  }
+  .finding-card {
+    background: #FFFFFF;
+    border: 1px solid #E4E2F0;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(108,71,216,0.08);
+    overflow: hidden;
+  }
+  .finding-header {
+    background: linear-gradient(90deg, var(--purple) 0%, var(--purple-mid) 100%);
+    color: white;
+    padding: 10px 14px;
+    font-weight: 800;
+    font-size: 13px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .finding-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .field-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .field-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .field-group-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    min-width: 70px;
+    text-align: center;
+    margin-top: 1px;
+  }
+  .badge-core   { background: var(--purple); color: white; padding: 2px 7px; border-radius: 5px; font-size: 10.5px; font-weight: 700; border: 1px solid var(--purple); }
+  .badge-common { background: #ede9fc; color: #4c1d95; padding: 2px 7px; border-radius: 5px; font-size: 10.5px; font-weight: 600; border: 1px solid #c4b5fd; }
+  .badge-additional { background: white; color: var(--gray); padding: 2px 7px; border-radius: 5px; font-size: 10.5px; font-weight: 500; border: 1px solid var(--border); }
+  .recommendation-box {
+    background: var(--purple-light);
+    border: 1px solid #c4b5fd;
+    border-radius: 8px;
+    padding: 10px;
+    grid-column: unset;
+  }
+  .recommendation-box .rec-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 6px;
+  }
+  .min-fields { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+  .badge-min { background: var(--purple); color: white; padding: 2px 7px; border-radius: 5px; font-size: 10.5px; font-weight: 600; }
+  .conclusion-text {
+    font-size: 11.5px;
+    color: var(--graphite);
+    font-style: italic;
+    line-height: 1.4;
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #c4b5fd;
+  }
+
 </style>
 </head>
 
@@ -1515,344 +1599,184 @@
 <div class="section-divider"></div>
 
 <!-- ==================== PAYMENT METHOD FINDINGS ==================== -->
-<div class="section-block" id="findings">
+<div class="section-block" <div class="section-block" id="findings">
   <div class="big-section-title">Payment Method Findings</div>
-  <div class="big-section-sub">Field analysis per payment method — based only on observed data. Helps identify the minimum field set for each flow.</div>
+  <div class="big-section-sub">Field analysis per payment method — based only on observed data.</div>
 
   <div class="findings-legend">
     <strong style="color:var(--graphite);font-size:11px;letter-spacing:0.5px;text-transform:uppercase">Legend:</strong>
-    <span class="legend-item"><span class="badge-core" style="font-size:10.5px;padding:2px 8px">Core</span> appears in all or almost all flows</span>
-    <span class="legend-item"><span class="badge-common" style="font-size:10.5px;padding:2px 8px">Common</span> appears in many but not all flows</span>
-    <span class="legend-item"><span class="badge-additional" style="font-size:10.5px;padding:2px 8px">Additional</span> provider-specific or flow-specific only</span>
+    <span class="legend-item"><span class="badge-core" style="font-size:10px;padding:2px 7px">Core</span> appears in all or almost all flows</span>
+    <span class="legend-item"><span class="badge-common" style="font-size:10px;padding:2px 7px">Common</span> appears in many but not all flows</span>
+    <span class="legend-item"><span class="badge-additional" style="font-size:10px;padding:2px 7px">Additional</span> provider-specific only</span>
   </div>
 
-  <!-- PSE -->
-  <div class="finding-card">
+  <div class="findings-grid">
+    <div class="finding-card">
     <div class="finding-header">🏦 PSE</div>
     <div class="finding-body">
       <div class="field-groups">
         <div class="field-group core">
           <span class="field-group-label">Core</span>
-          <div class="badge-wrap">
-            <span class="badge-core">Full name</span>
-            <span class="badge-core">Document number</span>
-            <span class="badge-core">Email</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-core">Bank</span><span class="badge-core">Full name</span><span class="badge-core">Document number</span><span class="badge-core">Email</span></div>
         </div>
         <div class="field-group common">
           <span class="field-group-label">Common</span>
-          <div class="badge-wrap">
-            <span class="badge-common">Phone number</span>
-            <span class="badge-common">Document type</span>
-            <span class="badge-common">Bank</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-common">Phone number</span><span class="badge-common">Document type</span></div>
         </div>
         <div class="field-group additional">
           <span class="field-group-label">Additional</span>
-          <div class="badge-wrap">
-            <span class="badge-additional">Address</span>
-            <span class="badge-additional">City</span>
-            <span class="badge-additional">Account type</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-additional">Address</span><span class="badge-additional">City</span><span class="badge-additional">Account type</span></div>
         </div>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Most PSE merchant forms request Full name + one identity field (Document number or Email). The 4bill-mediated merchants (bc.game, Brazino 777) show empty merchant sides — they delegate entirely to the provider. Direct integration merchants (1xbet, 20bet) ask for Bank and document fields themselves.</p>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">Provider APIs consistently require Bank + identity fields (Full name, Document type, Document number, Email, Phone number). This set appears in supefina.net, smartfastpay.com, and starpago flows. Simpler providers (4bill) only ask for Full name + Phone number + Email.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
-        <div class="min-fields">
-          <span class="badge-min">Bank</span>
-          <span class="badge-min">Full name</span>
-          <span class="badge-min">Email</span>
-          <span class="badge-min">Document type</span>
-          <span class="badge-min">Document number</span>
-        </div>
-        <div class="conclusion-text">To build a low-friction PSE flow, collect Bank, Full name, Email, Document type, and Document number. Bank selection is essential — PSE routes the payment based on the user's bank. Phone number and Address should be added only if the specific PSP requires them. City appears provider-specific and is not a core field.</div>
+        <div class="min-fields"><span class="badge-min">Bank</span><span class="badge-min">Full name</span><span class="badge-min">Email</span><span class="badge-min">Document type</span><span class="badge-min">Document number</span></div>
+        <div class="conclusion-text">Bank selection is essential — PSE routes payments via the user's bank. Collect Bank + Full name + Email + Document type + Document number for a standard flow. Phone and Address only if the specific PSP requires them.</div>
       </div>
     </div>
   </div>
-
-  <!-- Nequi -->
-  <div class="finding-card">
+    <div class="finding-card">
     <div class="finding-header">📱 Nequi</div>
     <div class="finding-body">
       <div class="field-groups">
         <div class="field-group core">
           <span class="field-group-label">Core</span>
-          <div class="badge-wrap">
-            <span class="badge-core">Full name</span>
-            <span class="badge-core">Phone number</span>
-            <span class="badge-core">Document number</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-core">Full name</span><span class="badge-core">Phone number</span></div>
         </div>
         <div class="field-group common">
           <span class="field-group-label">Common</span>
-          <div class="badge-wrap">
-            <span class="badge-common">Document type</span>
-            <span class="badge-common">Email</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-common">Email</span><span class="badge-common">Document number</span></div>
         </div>
         <div class="field-group additional">
           <span class="field-group-label">Additional</span>
-          <div class="badge-wrap">
-            <span class="badge-additional">Screenshot</span>
-            <span class="badge-additional">Comment</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-additional">Document type</span><span class="badge-additional">Account name</span></div>
         </div>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Direct push flows (without PSP) uniformly collect identity + phone data. The 4bill-mediated routes show minimal or no merchant-side fields, with 4bill's provider API always requesting Full name + Phone number + Email. The Nequi p2p route is a manual flow requiring screenshots — not scalable.</p>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">4bill and 4bill Payzen (QR) consistently ask for Full name + Phone number + Email via their API. TRX point asks for Document type (and sometimes Document number) on the provider side. Since Nequi is phone-linked, Phone number appears critical at the API layer.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
-        <div class="min-fields">
-          <span class="badge-min">Full name</span>
-          <span class="badge-min">Phone number</span>
-          <span class="badge-min">Document type</span>
-          <span class="badge-min">Document number</span>
-        </div>
-        <div class="conclusion-text">For Nequi, Phone number is the core identifier — the wallet is phone-linked. Full name, Document type, and Document number appear consistently across flows. Email is useful but not universal. Avoid screenshot-based flows in production.</div>
+        <div class="min-fields"><span class="badge-min">Full name</span><span class="badge-min">Phone number</span></div>
+        <div class="conclusion-text">Phone number is the core Nequi identifier. Full name appears in all non-empty flows. Email and Document number are common but not universal. Start with Full name + Phone number.</div>
       </div>
     </div>
   </div>
-
-  <!-- Bre-b -->
-  <div class="finding-card">
+    <div class="finding-card">
     <div class="finding-header">💳 Bre-b</div>
     <div class="finding-body">
       <div class="field-groups">
         <div class="field-group core">
           <span class="field-group-label">Core</span>
-          <div class="badge-wrap">
-            <span class="badge-core">Full name</span>
-            <span class="badge-core">Phone number</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-core">Full name</span></div>
+        </div>
+        <div class="field-group common">
+          <span class="field-group-label">Common</span>
+          <div class="badge-wrap"><span class="badge-common">Phone number</span><span class="badge-common">Email</span></div>
         </div>
         <div class="field-group additional">
           <span class="field-group-label">Additional</span>
-          <div class="badge-wrap">
-            <span class="badge-additional">Email</span>
-            <span class="badge-additional" style="font-style:italic;font-size:10.5px">provider API level only</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-additional">Document type</span><span class="badge-additional">Document number</span><span class="badge-additional">Screenshot</span></div>
         </div>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Bre-b data is sparse. Most merchant-side cells are empty, suggesting either the merchant collects data before hand-off or the flow is redirect-based. The only filled merchant form (Jugabet via 4bill→cobre) shows Full name + Phone number.</p>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">The 4bill→cobre provider consistently requests Full name + Phone number + Email at the API level. topup.com.co shows no observed provider-side fields — data may be missing or the flow is simpler.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
-        <div class="min-fields">
-          <span class="badge-min">Full name</span>
-          <span class="badge-min">Phone number</span>
-          <span class="badge-min">Email</span>
-        </div>
-        <div class="conclusion-text">Based on limited data, Full name + Phone number appear to be the core fields for Bre-b merchant flows. Email is likely needed at the provider API level. Data coverage for this method is thin — treat these recommendations with caution.</div>
+        <div class="min-fields"><span class="badge-min">Full name</span><span class="badge-min">Phone number</span></div>
+        <div class="conclusion-text">Bre-b flows focus on a unique llave (key) generated by the provider. Full name is required; Phone number appears in most flows. P2P routes also require a screenshot proof.</div>
       </div>
     </div>
   </div>
-
-  <!-- Bancolombia -->
-  <div class="finding-card">
+    <div class="finding-card">
     <div class="finding-header">🏛️ Bancolombia</div>
     <div class="finding-body">
       <div class="field-groups">
         <div class="field-group core">
           <span class="field-group-label">Core</span>
-          <div class="badge-wrap">
-            <span class="badge-core">Full name</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-core">Full name</span></div>
         </div>
         <div class="field-group common">
           <span class="field-group-label">Common</span>
-          <div class="badge-wrap">
-            <span class="badge-common">Phone number</span>
-            <span class="badge-common">Email</span>
-            <span class="badge-common">Document number</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-common">Phone number</span><span class="badge-common">Email</span><span class="badge-common">Document number</span></div>
         </div>
         <div class="field-group additional">
           <span class="field-group-label">Additional</span>
-          <div class="badge-wrap">
-            <span class="badge-additional">Document type</span>
-            <span class="badge-additional">Bank number</span>
-            <span class="badge-additional">Screenshot</span>
-            <span class="badge-additional">TX id</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-additional">Document type</span><span class="badge-additional">Bank number</span><span class="badge-additional">Screenshot</span><span class="badge-additional">TX id</span></div>
         </div>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">4bill-mediated merchants (1win, Jugabet, Brazino777) show minimal or empty merchant sides. PSP-integrated providers (supefina, smartfastpay) request a richer set. P2P routes require manual proof (bank account number, screenshot) — not suitable for automated flows.</p>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">4bill API asks for Full name + Phone number + Email. supefina.net and smartfastpay.com APIs ask for Full name + Document type + Document number + Email + Phone number — a richer set. P2P has no observed provider-side API.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
-        <div class="min-fields">
-          <span class="badge-min">Full name</span>
-          <span class="badge-min">Phone number</span>
-          <span class="badge-min">Email</span>
-        </div>
-        <div class="conclusion-text">For Bancolombia via 4bill (the most common observed provider), Full name + Phone number + Email appears sufficient. If using supefina.net or smartfastpay.com, add Document type and Document number. Avoid P2P flows for automated processing.</div>
+        <div class="min-fields"><span class="badge-min">Full name</span><span class="badge-min">Phone number</span><span class="badge-min">Email</span></div>
+        <div class="conclusion-text">For Bancolombia via 4bill, Full name + Phone number + Email appears sufficient. If using supefina.net or smartfastpay.com, add Document type and Document number. Avoid P2P flows for automated processing.</div>
       </div>
     </div>
   </div>
-
-  <!-- Daviplata -->
-  <div class="finding-card">
+    <div class="finding-card">
     <div class="finding-header">📲 Daviplata</div>
     <div class="finding-body">
       <div class="field-groups">
         <div class="field-group core">
           <span class="field-group-label">Core</span>
-          <div class="badge-wrap">
-            <span class="badge-core">Full name</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-core">Full name</span></div>
         </div>
         <div class="field-group common">
           <span class="field-group-label">Common</span>
-          <div class="badge-wrap">
-            <span class="badge-common">Phone number</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-common">Phone number</span></div>
         </div>
         <div class="field-group additional">
           <span class="field-group-label">Additional</span>
-          <div class="badge-wrap">
-            <span class="badge-additional">Email</span>
-            <span class="badge-additional">Document type</span>
-            <span class="badge-additional">Document number</span>
-            <span class="badge-additional">Address</span>
-            <span class="badge-additional">Screenshot</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-additional">Email</span><span class="badge-additional">Document type</span><span class="badge-additional">Document number</span><span class="badge-additional">Address</span><span class="badge-additional">Screenshot</span></div>
         </div>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">4bill for Daviplata shows an empty merchant side — consistent with its pattern of delegating to its own API. Direct PSE integration (melbet) requests a full identity set. api.lamapay.org/ p2p requests only Full name; the standalone P2P route for 1xbet requests Full name + Phone + Screenshot — a manual verification flow.</p>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">4bill API requests Full name + Phone number + Email. checkout.pagsmile.com requests a full identity set including Address. P2P and Direct PSE entries show no provider-side API data, suggesting direct bank-side integration.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
-        <div class="min-fields">
-          <span class="badge-min">Full name</span>
-          <span class="badge-min">Phone number</span>
-        </div>
-        <div class="conclusion-text">Daviplata is phone-linked — Phone number is the core identifier. Full name appears in all non-empty flows. Document fields and Address are provider-specific (Direct PSE / pagsmile). Start with Full name + Phone number and extend based on the provider chosen.</div>
+        <div class="min-fields"><span class="badge-min">Full name</span><span class="badge-min">Phone number</span></div>
+        <div class="conclusion-text">Daviplata is phone-linked — Phone number is the core identifier. Full name appears in all non-empty flows. Document fields and Address are provider-specific. Start with Full name + Phone number and extend based on the provider chosen.</div>
       </div>
     </div>
   </div>
-
-  <!-- Tpaga (QR) -->
-  <div class="finding-card">
+    <div class="finding-card">
     <div class="finding-header">📷 Tpaga (QR)</div>
     <div class="finding-body">
       <div class="field-groups">
         <div class="field-group core">
           <span class="field-group-label">Core</span>
-          <div class="badge-wrap">
-            <span class="badge-core">Document type</span>
-            <span class="badge-core">Document number</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-core">Document type</span><span class="badge-core">Document number</span></div>
         </div>
+        
         <div class="field-group additional">
           <span class="field-group-label">Additional</span>
-          <div class="badge-wrap">
-            <span class="badge-additional">Full name</span>
-            <span class="badge-additional">Email</span>
-            <span class="badge-additional">Phone number</span>
-            <span class="badge-additional">Address</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-additional">Full name</span><span class="badge-additional">Email</span><span class="badge-additional">Phone number</span><span class="badge-additional">Address</span></div>
         </div>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Very limited data — only P2P-routed merchants (1win and melbet) have observed merchant-side fields. 1win shows a minimal set (Document type + Document number), while melbet's form is more complete. checkout.pagsmile.com / Binomo shows no fields on either side.</p>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">No provider-side fields observed in this payment method. checkout.pagsmile.com shows both sides empty for Tpaga (QR), which may indicate incomplete data capture at research time.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
-        <div class="min-fields">
-          <span class="badge-min">Document type</span>
-          <span class="badge-min">Document number</span>
-        </div>
-        <div class="conclusion-text">Based on limited data, Document type and Document number appear consistently for QR-based flows. Tpaga (QR) data coverage is very thin — treat this recommendation with caution and verify directly with the PSP before building.</div>
+        <div class="min-fields"><span class="badge-min">Document type</span><span class="badge-min">Document number</span></div>
+        <div class="conclusion-text">Based on limited data, Document type and Document number appear consistently for QR-based flows. Tpaga data coverage is thin — verify directly with the PSP before building.</div>
       </div>
     </div>
   </div>
-
-  <!-- Movii (PSE) -->
-  <div class="finding-card">
+    <div class="finding-card">
     <div class="finding-header">🔄 Movii (PSE)</div>
     <div class="finding-body">
       <div class="field-groups">
         <div class="field-group core">
           <span class="field-group-label">Core</span>
-          <div class="badge-wrap">
-            <span class="badge-core">Full name</span>
-            <span class="badge-core">Email</span>
-            <span class="badge-core">Phone number</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-core">Full name</span><span class="badge-core">Email</span><span class="badge-core">Phone number</span></div>
         </div>
+        
         <div class="field-group additional">
           <span class="field-group-label">Additional</span>
-          <div class="badge-wrap">
-            <span class="badge-additional">Document type</span>
-            <span class="badge-additional">Document number</span>
-            <span class="badge-additional">Address</span>
-          </div>
+          <div class="badge-wrap"><span class="badge-additional">Document type</span><span class="badge-additional">Document number</span><span class="badge-additional">Address</span></div>
         </div>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Merchant side pattern</div>
-        <p class="pattern-text">Only 2 merchant rows observed. The 4bill route shows no merchant-side fields. The Direct PSE route (melbet) shows a full identity set including Address. Movii (PSE) appears to behave similarly to standard PSE in terms of required data.</p>
-      </div>
-      <div class="finding-block">
-        <div class="finding-block-title">Provider side pattern</div>
-        <p class="pattern-text">Only 4bill shows provider-side data: Full name + Phone number + Email. Consistent with 4bill's standard API requirement across all payment methods.</p>
       </div>
       <div class="recommendation-box">
         <div class="rec-title">Recommended Minimum Field Set</div>
-        <div class="min-fields">
-          <span class="badge-min">Full name</span>
-          <span class="badge-min">Email</span>
-          <span class="badge-min">Phone number</span>
-        </div>
-        <div class="conclusion-text">Extremely limited data — only 2 providers and 2 merchants observed. Treat PSE field requirements as a baseline, then adjust based on provider. The 4bill API set (Full name + Phone + Email) appears as the practical minimum for this method.</div>
+        <div class="min-fields"><span class="badge-min">Full name</span><span class="badge-min">Email</span><span class="badge-min">Phone number</span></div>
+        <div class="conclusion-text">Extremely limited data — only 2 providers observed. Treat PSE field requirements as a baseline. The 4bill API set (Full name + Phone + Email) appears as the practical minimum.</div>
       </div>
     </div>
   </div>
+  </div>
 </div>
 
-
-
-<div class="section-divider"></div>
-
-<!-- ==================== FINAL CONCLUSIONS ==================== -->
-<div class="section-block" id="conclusions">
+id="conclusions">
   <span class="section-label">Summary</span>
   <div class="payment-method-title" style="font-size:22px">🏁 Final Conclusions</div>
   <div class="section-desc">Key conclusions will be added manually after final review.</div>
