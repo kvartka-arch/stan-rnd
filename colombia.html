@@ -610,28 +610,6 @@
   }
 
 
-  /* === Flow Screenshots Gallery === */
-  #flow-screenshots { padding-bottom: 8px; }
-  .flow-block { margin: 0 0 44px 0; }
-  .fb-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid #EDE8F9; }
-  .fb-icon { font-size: 26px; line-height: 1.1; flex-shrink: 0; }
-  .fb-title { font-size: 18px; font-weight: 800; color: #171426; margin-bottom: 2px; }
-  .fb-sub { font-size: 12px; color: #8B82A7; }
-  .fc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  @media (max-width: 900px) { .fc-grid { grid-template-columns: 1fr; } }
-  .flow-card { background: #FFFFFF; border: 1px solid #E4DEF2; border-radius: 16px; box-shadow: 0 6px 24px rgba(42,31,84,0.07); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
-  .fc-title { font-size: 14px; font-weight: 800; color: #171426; margin: 0; line-height: 1.3; }
-  .fc-meta { display: flex; flex-wrap: wrap; gap: 6px; }
-  .fc-chip { background: #F4EEFF; border: 1px solid #D2B8FF; color: #5B248F; border-radius: 999px; padding: 3px 9px; font-size: 11px; font-weight: 700; max-width: 100%; word-break: break-word; }
-  .fc-frame { width: 100%; height: 360px; background: #F7F5FC; border: 1px solid #EDE8F9; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
-  .fc-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
-  .fc-desc { color: #655F7A; font-size: 12px; line-height: 1.5; margin: 0; }
-  .pay-attention { padding: 10px 12px; border-left: 3px solid #7B45F6; background: #FAF8FF; border-radius: 10px; font-size: 12px; color: #3A315A; line-height: 1.45; }
-  .pa-label { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.07em; color: #7B45F6; display: block; margin-bottom: 3px; }
-
-
-  
-  
   /* ════ Payment Flow Screenshots ════ */
   .flow-main-header {
     margin:32px 0 26px; padding:26px 30px; border-radius:22px;
@@ -738,42 +716,63 @@
   }
   .lightbox-close:hover { background:rgba(255,255,255,.22); }
 
+
+  /* Active nav link */
+  .toc-bar a.toc-active { background: var(--purple); color: #fff; border-color: var(--purple); }
+  /* Table overflow on mobile */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  /* ── Final Conclusions ── */
+  .conclusions-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+  }
+  @media (max-width: 1200px) { .conclusions-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px)  { .conclusions-grid { grid-template-columns: 1fr; } }
+  .conclusion-card {
+    min-height: 150px;
+    background: #FFFFFF;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .conclusion-card-title {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--purple);
+  }
+  .conclusion-placeholder {
+    color: #c5c1d6;
+    font-size: 13px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
 </style>
 </head>
+
 <body>
-
-<!-- HEADER -->
-<div class="doc-header">
-  <h1>Colombia R&D: Payment Providers &amp; Fields</h1>
-  <div class="subtitle">May 2026 · by Stan</div>
-  <div class="pill-row">
-    <span class="pill">7 Payment Methods</span>
-    <span class="pill">19 Providers</span>
-    <span class="pill">12 Merchants</span>
-    <span class="pill">Colombia Market</span>
-  </div>
-</div>
-
 <!-- STICKY NAV -->
 <nav class="toc-bar">
   <span class="toc-label">Jump to section</span>
   <a href="#merchant-ranking">Merchant Ranking</a>
-  <a href="#flow-screenshots">Flow Screenshots</a>
-  <a href="#pse">PSE</a>
-  <a href="#nequi">Nequi</a>
-  <a href="#breb">Bre-b</a>
-  <a href="#bancolombia">Bancolombia</a>
-  <a href="#daviplata">Daviplata</a>
-  <a href="#tpaga">Tpaga (QR)</a>
-  <a href="#movii">Movii (PSE)</a>
   <a href="#provider-coverage">Provider Coverage</a>
-  <a href="#merchant-coverage">Merchant Coverage</a>
+  <a href="#flow-screenshots">Flow Screenshots</a>
   <a href="#findings">Findings</a>
+  <a href="#conclusions">Final Conclusions</a>
 </nav>
 
 <div class="content">
 
-<!-- ==================== MERCHANT RANKING IN COLOMBIA ==================== -->
+<!-- ==================== MERCHANT RANKING ==================== -->
+<div class="section-block" id="merchant-ranking">
 <div class="section-block" id="merchant-ranking">
   <span class="section-label">Market Overview</span>
   <div class="payment-method-title" style="font-size:22px">📊 Merchant Ranking in Colombia</div>
@@ -875,10 +874,174 @@
 </div>
 
 
+
+</div>
+
 <div class="section-divider"></div>
 
-<!-- ==================== FLOW SCREENSHOTS ==================== -->
-<div class="section-block" <div class="section-block" id="flow-screenshots">
+<!-- ==================== PROVIDER COVERAGE SUMMARY ==================== -->
+<div class="section-block" id="provider-coverage">
+  <div class="big-section-title">Provider Coverage Summary</div>
+  <div class="big-section-sub">Each provider shown once · sorted by payment method count, then by unique merchant count.</div>
+
+  <div class="cov-grid">
+
+    <!-- 1. 4bill — 5 methods · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">4bill</div>
+      <div class="cov-stats">5 methods · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">1win, bc.game, Brazino 777</span></div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, Jugabet, Brazino 777</span></div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1win, Jugabet, Brazino777</span></div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1win</span></div>
+      <div class="cov-row"><span class="cov-tag">Movii (PSE)</span><span class="cov-merchants">1win</span></div>
+    </div>
+
+    <!-- 2. P2P — 3 methods · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">P2P</div>
+      <div class="cov-stats">3 methods · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1xbet, betwinner</span></div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
+      <div class="cov-row"><span class="cov-tag">Tpaga (QR)</span><span class="cov-merchants">1win, melbet</span></div>
+    </div>
+
+    <!-- 3. co-payer.erjqport.com — 2 methods · 3 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">co-payer.erjqport.com</div>
+      <div class="cov-stats">2 methods · 3 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">Jugabet, bc.game, 20bet</span></div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">20bet</span></div>
+    </div>
+
+    <!-- 4. smartfastpay.com — 2 methods · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">smartfastpay.com</div>
+      <div class="cov-stats">2 methods · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">betwinner, Binomo</span></div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">betwinner</span></div>
+    </div>
+
+    <!-- 5. checkout.pagsmile.com — 2 methods · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">checkout.pagsmile.com</div>
+      <div class="cov-stats">2 methods · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">Binomo</span></div>
+      <div class="cov-row"><span class="cov-tag">Tpaga (QR)</span><span class="cov-merchants">Binomo</span></div>
+    </div>
+
+    <!-- 6. Direct PSE — 2 methods · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">Direct PSE</div>
+      <div class="cov-stats">2 methods · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">melbet</span></div>
+      <div class="cov-row"><span class="cov-tag">Movii (PSE)</span><span class="cov-merchants">melbet</span></div>
+    </div>
+
+    <!-- 7. supefina.net — 2 methods · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">supefina.net</div>
+      <div class="cov-stats">2 methods · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">bc.game</span></div>
+      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">bc.game</span></div>
+    </div>
+
+    <!-- 8. Direct pay (push) (without PSP) — 1 method · 5 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">Direct pay (push) (without PSP)</div>
+      <div class="cov-stats">1 method · 5 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, 1xbet, Jugabet, melbet, Binomo</span></div>
+    </div>
+
+    <!-- 9. 4bill -> cobre — 1 method · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">4bill -&gt; cobre</div>
+      <div class="cov-stats">1 method · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">Jugabet, bc.game, Brazino777, Quotex</span></div>
+    </div>
+
+    <!-- 10. pay.trx-point.com — 1 method · 4 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">pay.trx-point.com</div>
+      <div class="cov-stats">1 method · 4 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">megapari, quotex, melbet, pocketoption</span></div>
+    </div>
+
+    <!-- 11. TRX point — 1 method · 3 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">TRX point</div>
+      <div class="cov-stats">1 method · 3 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">betwinner, megapari, quotex</span></div>
+    </div>
+
+    <!-- 12. 4bill Payzen (QR) — 1 method · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">4bill Payzen (QR)</div>
+      <div class="cov-stats">1 method · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">Jugabet, bc.game</span></div>
+    </div>
+
+    <!-- 13. Direct pay (without PSP) — 1 method · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">Direct pay (without PSP)</div>
+      <div class="cov-stats">1 method · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">1xbet, 20bet</span></div>
+    </div>
+
+    <!-- 14. topup.com.co — 1 method · 2 merchants -->
+    <div class="cov-card">
+      <div class="cov-name">topup.com.co</div>
+      <div class="cov-stats">1 method · 2 merchants</div>
+      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win, Binomo</span></div>
+    </div>
+
+    <!-- 15. api.lamapay.org/ p2p — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">api.lamapay.org/ p2p</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
+    </div>
+
+    <!-- 16. Bre B h2h p2p — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">Bre B h2h p2p</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win</span></div>
+    </div>
+
+    <!-- 17. Nequi p2p — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">Nequi p2p</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1xbet</span></div>
+    </div>
+
+    <!-- 18. payretailers.com — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">payretailers.com</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">pocketoption</span></div>
+    </div>
+
+    <!-- 19. pro.h5.starpago.com — 1 method · 1 merchant -->
+    <div class="cov-card">
+      <div class="cov-name">pro.h5.starpago.com</div>
+      <div class="cov-stats">1 method · 1 merchant</div>
+      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">bc.game</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ==================== MERCHANT COVERAGE SUMMARY ==================== -->
+
+
+<div class="section-divider"></div>
+
+<!-- ==================== PAYMENT FLOW SCREENSHOTS ==================== -->
+<div class="section-block" id="flow-screenshots">
   <div class="flow-main-header">
     <h2>📸 Payment Flow Screenshots</h2>
     <p>Selected payment flow screenshots from the market research presentation.</p>
@@ -1347,708 +1510,7 @@
   </div>
 </div>
 
-id="pse">
-  <span class="section-label">Payment Method</span>
-  <div class="payment-method-title"><div class="method-icon">🏦</div>PSE</div>
-  <div class="section-desc">Pago Seguro en Línea — bank-based push payment. Most widely covered method.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:17%">Provider</th>
-          <th style="width:13%">Merchant</th>
-          <th>Merchant Side</th>
-          <th>Provider Side</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- pay.trx-point.com -->
-        <tr>
-          <td class="provider-cell" rowspan="4">pay.trx-point.com</td>
-          <td class="merchant-cell">megapari</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">City</span><span class="badge badge-merchant">Address</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Bank</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">quotex</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">City</span><span class="badge badge-merchant">Address</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Bank</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">melbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">pocketoption</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span></div></td>
-        </tr>
-        <!-- co-payer.erjqport.com -->
-        <tr>
-          <td class="provider-cell" rowspan="3">co-payer.erjqport.com</td>
-          <td class="merchant-cell">Jugabet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span><span class="badge badge-provider">Account type</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">bc.game</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span><span class="badge badge-provider">Account type</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">20bet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span><span class="badge badge-provider">Account type</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <!-- 4bill -->
-        <tr>
-          <td class="provider-cell" rowspan="3">4bill</td>
-          <td class="merchant-cell">1win</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Bank</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Email</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">bc.game</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Brazino 777</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <!-- smartfastpay.com -->
-        <tr>
-          <td class="provider-cell" rowspan="2">smartfastpay.com</td>
-          <td class="merchant-cell">betwinner</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Address</span><span class="badge badge-provider">Bank</span><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Email</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Binomo</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Email</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <!-- supefina.net -->
-        <tr>
-          <td class="provider-cell">supefina.net</td>
-          <td class="merchant-cell">bc.game</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Full name</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Email</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <!-- pro.h5.starpago.com -->
-        <tr>
-          <td class="provider-cell">pro.h5.starpago.com</td>
-          <td class="merchant-cell">bc.game</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Email</span><span class="badge badge-provider">Bank</span></div></td>
-        </tr>
-        <!-- payretailers.com -->
-        <tr>
-          <td class="provider-cell">payretailers.com</td>
-          <td class="merchant-cell">pocketoption</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Bank</span><span class="badge badge-provider">Account type</span><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <!-- Direct pay (without PSP) -->
-        <tr>
-          <td class="provider-cell" rowspan="2">Direct pay<br>(without PSP)</td>
-          <td class="merchant-cell">1xbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Bank</span><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Address</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">20bet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Bank</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
-<!-- ==================== Nequi ==================== -->
-<div class="section-block" id="nequi">
-  <span class="section-label">Payment Method</span>
-  <div class="payment-method-title"><div class="method-icon">📱</div>Nequi</div>
-  <div class="section-desc">Mobile wallet — phone-based push transfers. Includes direct push flows and PSP-mediated routes.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:17%">Provider</th>
-          <th style="width:13%">Merchant</th>
-          <th>Merchant Side</th>
-          <th>Provider Side</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Direct pay (push) (without PSP) -->
-        <tr>
-          <td class="provider-cell" rowspan="5">Direct pay (push)<br>(without PSP)</td>
-          <td class="merchant-cell">1win (push)</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">1xbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Jugabet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">melbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Document type</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Binomo</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <!-- 4bill -->
-        <tr>
-          <td class="provider-cell" rowspan="3">4bill</td>
-          <td class="merchant-cell">1win</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Jugabet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Phone number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Brazino 777</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <!-- 4bill Payzen (QR) -->
-        <tr>
-          <td class="provider-cell" rowspan="2">4bill Payzen (QR)</td>
-          <td class="merchant-cell">Jugabet</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">bc.game</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <!-- TRX point -->
-        <tr>
-          <td class="provider-cell" rowspan="3">TRX point</td>
-          <td class="merchant-cell">betwinner</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Document type</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">megapari</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">quotex</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Document type</span></div></td>
-        </tr>
-        <!-- co-payer.erjqport.com -->
-        <tr>
-          <td class="provider-cell">co-payer.erjqport.com</td>
-          <td class="merchant-cell">20bet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <!-- Nequi p2p -->
-        <tr>
-          <td class="provider-cell">Nequi p2p</td>
-          <td class="merchant-cell">1xbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Screenshot</span><span class="badge badge-merchant">Comment</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ==================== Bre-b ==================== -->
-<div class="section-block" id="breb">
-  <span class="section-label">Payment Method</span>
-  <div class="payment-method-title"><div class="method-icon">💳</div>Bre-b</div>
-  <div class="section-desc">Bank transfer via Bre-b protocol. Limited data — mostly 4bill routing.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:17%">Provider</th>
-          <th style="width:13%">Merchant</th>
-          <th>Merchant Side</th>
-          <th>Provider Side</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="provider-cell">Bre B h2h p2p</td>
-          <td class="merchant-cell">1win</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <!-- 4bill -> cobre -->
-        <tr>
-          <td class="provider-cell" rowspan="4">4bill -&gt; cobre</td>
-          <td class="merchant-cell">Jugabet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Phone number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">bc.game</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Brazino777</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Quotex</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <!-- topup.com.co -->
-        <tr>
-          <td class="provider-cell" rowspan="2">topup.com.co</td>
-          <td class="merchant-cell">1win</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Binomo</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ==================== Bancolombia ==================== -->
-<div class="section-block" id="bancolombia">
-  <span class="section-label">Payment Method</span>
-  <div class="payment-method-title"><div class="method-icon">🏛️</div>Bancolombia</div>
-  <div class="section-desc">Colombia's largest bank — direct bank transfer via Bancolombia's payment gateway.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:17%">Provider</th>
-          <th style="width:13%">Merchant</th>
-          <th>Merchant Side</th>
-          <th>Provider Side</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- 4bill -->
-        <tr>
-          <td class="provider-cell" rowspan="3">4bill</td>
-          <td class="merchant-cell">1win</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Jugabet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Brazino777</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <!-- P2P -->
-        <tr>
-          <td class="provider-cell" rowspan="2">P2P</td>
-          <td class="merchant-cell">1xbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Bank number</span><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Screenshot</span><span class="badge badge-merchant">Comment</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">betwinner</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Bank number</span><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">TX id</span><span class="badge badge-merchant">Screenshot</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <!-- supefina.net -->
-        <tr>
-          <td class="provider-cell">supefina.net</td>
-          <td class="merchant-cell">bc.game</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Full name</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Email</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-        <!-- smartfastpay.com -->
-        <tr>
-          <td class="provider-cell">smartfastpay.com</td>
-          <td class="merchant-cell">betwinner</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Email</span><span class="badge badge-provider">Phone number</span></div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ==================== Daviplata ==================== -->
-<div class="section-block" id="daviplata">
-  <span class="section-label">Payment Method</span>
-  <div class="payment-method-title"><div class="method-icon">📲</div>Daviplata</div>
-  <div class="section-desc">Davivienda's digital wallet — phone-number-linked account, popular for mobile payments.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:17%">Provider</th>
-          <th style="width:13%">Merchant</th>
-          <th>Merchant Side</th>
-          <th>Provider Side</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="provider-cell">4bill</td>
-          <td class="merchant-cell">1win</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="provider-cell">Direct PSE</td>
-          <td class="merchant-cell">melbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Address</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="provider-cell">checkout.pagsmile.com</td>
-          <td class="merchant-cell">Binomo</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Document type</span><span class="badge badge-provider">Document number</span><span class="badge badge-provider">Email</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Address</span></div></td>
-        </tr>
-        <!-- api.lamapay.org/ p2p -->
-        <tr>
-          <td class="provider-cell">api.lamapay.org/ p2p</td>
-          <td class="merchant-cell">1xbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <!-- P2P -->
-        <tr>
-          <td class="provider-cell">P2P</td>
-          <td class="merchant-cell">1xbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Screenshot</span><span class="badge badge-merchant">Comment</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ==================== Tpaga (QR) ==================== -->
-<div class="section-block" id="tpaga">
-  <span class="section-label">Payment Method</span>
-  <div class="payment-method-title"><div class="method-icon">📷</div>Tpaga (QR)</div>
-  <div class="section-desc">QR-code-based payment via Tpaga wallet app.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:17%">Provider</th>
-          <th style="width:13%">Merchant</th>
-          <th>Merchant Side</th>
-          <th>Provider Side</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- P2P -->
-        <tr>
-          <td class="provider-cell" rowspan="2">P2P</td>
-          <td class="merchant-cell">1win</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">melbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Address</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-        <tr>
-          <td class="provider-cell">checkout.pagsmile.com</td>
-          <td class="merchant-cell">Binomo</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- ==================== Movii (PSE) ==================== -->
-<div class="section-block" id="movii">
-  <span class="section-label">Payment Method</span>
-  <div class="payment-method-title"><div class="method-icon">🔄</div>Movii (PSE)</div>
-  <div class="section-desc">PSE payments routed via Movii digital wallet. Limited data.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:17%">Provider</th>
-          <th style="width:13%">Merchant</th>
-          <th>Merchant Side</th>
-          <th>Provider Side</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="provider-cell">4bill</td>
-          <td class="merchant-cell">1win</td>
-          <td><span class="badge-dash">—</span></td>
-          <td><div class="badge-wrap"><span class="badge badge-provider">Full name</span><span class="badge badge-provider">Phone number</span><span class="badge badge-provider">Email</span></div></td>
-        </tr>
-        <tr>
-          <td class="provider-cell">Direct PSE</td>
-          <td class="merchant-cell">melbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-merchant">Full name</span><span class="badge badge-merchant">Email</span><span class="badge badge-merchant">Phone number</span><span class="badge badge-merchant">Document type</span><span class="badge badge-merchant">Document number</span><span class="badge badge-merchant">Address</span></div></td>
-          <td><span class="badge-dash">—</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ==================== PROVIDER COVERAGE SUMMARY ==================== -->
-<div class="section-block" id="provider-coverage">
-  <div class="big-section-title">Provider Coverage Summary</div>
-  <div class="big-section-sub">Each provider shown once · sorted by payment method count, then by unique merchant count.</div>
-
-  <div class="cov-grid">
-
-    <!-- 1. 4bill — 5 methods · 4 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">4bill</div>
-      <div class="cov-stats">5 methods · 4 merchants</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">1win, bc.game, Brazino 777</span></div>
-      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, Jugabet, Brazino 777</span></div>
-      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1win, Jugabet, Brazino777</span></div>
-      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1win</span></div>
-      <div class="cov-row"><span class="cov-tag">Movii (PSE)</span><span class="cov-merchants">1win</span></div>
-    </div>
-
-    <!-- 2. P2P — 3 methods · 4 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">P2P</div>
-      <div class="cov-stats">3 methods · 4 merchants</div>
-      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1xbet, betwinner</span></div>
-      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
-      <div class="cov-row"><span class="cov-tag">Tpaga (QR)</span><span class="cov-merchants">1win, melbet</span></div>
-    </div>
-
-    <!-- 3. co-payer.erjqport.com — 2 methods · 3 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">co-payer.erjqport.com</div>
-      <div class="cov-stats">2 methods · 3 merchants</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">Jugabet, bc.game, 20bet</span></div>
-      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">20bet</span></div>
-    </div>
-
-    <!-- 4. smartfastpay.com — 2 methods · 2 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">smartfastpay.com</div>
-      <div class="cov-stats">2 methods · 2 merchants</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">betwinner, Binomo</span></div>
-      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">betwinner</span></div>
-    </div>
-
-    <!-- 5. checkout.pagsmile.com — 2 methods · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">checkout.pagsmile.com</div>
-      <div class="cov-stats">2 methods · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">Binomo</span></div>
-      <div class="cov-row"><span class="cov-tag">Tpaga (QR)</span><span class="cov-merchants">Binomo</span></div>
-    </div>
-
-    <!-- 6. Direct PSE — 2 methods · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">Direct PSE</div>
-      <div class="cov-stats">2 methods · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">melbet</span></div>
-      <div class="cov-row"><span class="cov-tag">Movii (PSE)</span><span class="cov-merchants">melbet</span></div>
-    </div>
-
-    <!-- 7. supefina.net — 2 methods · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">supefina.net</div>
-      <div class="cov-stats">2 methods · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">bc.game</span></div>
-      <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">bc.game</span></div>
-    </div>
-
-    <!-- 8. Direct pay (push) (without PSP) — 1 method · 5 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">Direct pay (push) (without PSP)</div>
-      <div class="cov-stats">1 method · 5 merchants</div>
-      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, 1xbet, Jugabet, melbet, Binomo</span></div>
-    </div>
-
-    <!-- 9. 4bill -> cobre — 1 method · 4 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">4bill -&gt; cobre</div>
-      <div class="cov-stats">1 method · 4 merchants</div>
-      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">Jugabet, bc.game, Brazino777, Quotex</span></div>
-    </div>
-
-    <!-- 10. pay.trx-point.com — 1 method · 4 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">pay.trx-point.com</div>
-      <div class="cov-stats">1 method · 4 merchants</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">megapari, quotex, melbet, pocketoption</span></div>
-    </div>
-
-    <!-- 11. TRX point — 1 method · 3 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">TRX point</div>
-      <div class="cov-stats">1 method · 3 merchants</div>
-      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">betwinner, megapari, quotex</span></div>
-    </div>
-
-    <!-- 12. 4bill Payzen (QR) — 1 method · 2 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">4bill Payzen (QR)</div>
-      <div class="cov-stats">1 method · 2 merchants</div>
-      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">Jugabet, bc.game</span></div>
-    </div>
-
-    <!-- 13. Direct pay (without PSP) — 1 method · 2 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">Direct pay (without PSP)</div>
-      <div class="cov-stats">1 method · 2 merchants</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">1xbet, 20bet</span></div>
-    </div>
-
-    <!-- 14. topup.com.co — 1 method · 2 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">topup.com.co</div>
-      <div class="cov-stats">1 method · 2 merchants</div>
-      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win, Binomo</span></div>
-    </div>
-
-    <!-- 15. api.lamapay.org/ p2p — 1 method · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">api.lamapay.org/ p2p</div>
-      <div class="cov-stats">1 method · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
-    </div>
-
-    <!-- 16. Bre B h2h p2p — 1 method · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">Bre B h2h p2p</div>
-      <div class="cov-stats">1 method · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win</span></div>
-    </div>
-
-    <!-- 17. Nequi p2p — 1 method · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">Nequi p2p</div>
-      <div class="cov-stats">1 method · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1xbet</span></div>
-    </div>
-
-    <!-- 18. payretailers.com — 1 method · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">payretailers.com</div>
-      <div class="cov-stats">1 method · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">pocketoption</span></div>
-    </div>
-
-    <!-- 19. pro.h5.starpago.com — 1 method · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">pro.h5.starpago.com</div>
-      <div class="cov-stats">1 method · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">bc.game</span></div>
-    </div>
-
-  </div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ==================== MERCHANT COVERAGE SUMMARY ==================== -->
-<div class="section-block" id="merchant-coverage">
-  <div class="big-section-title">Merchant Coverage Summary</div>
-  <div class="big-section-sub">Payment methods found per merchant. No provider or field data shown here.</div>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:15%">Merchant</th>
-          <th>Payment Methods Found</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="merchant-cell">1win</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bre-b</span><span class="badge badge-pm">Bancolombia</span><span class="badge badge-pm">Daviplata</span><span class="badge badge-pm">Tpaga (QR)</span><span class="badge badge-pm">Movii (PSE)</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">melbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Daviplata</span><span class="badge badge-pm">Tpaga (QR)</span><span class="badge badge-pm">Movii (PSE)</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Jugabet</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bre-b</span><span class="badge badge-pm">Bancolombia</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">bc.game</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bre-b</span><span class="badge badge-pm">Bancolombia</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Binomo</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bre-b</span><span class="badge badge-pm">Daviplata</span><span class="badge badge-pm">Tpaga (QR)</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">1xbet</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bancolombia</span><span class="badge badge-pm">Daviplata</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">betwinner</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bancolombia</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">Brazino 777</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bre-b</span><span class="badge badge-pm">Bancolombia</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">quotex</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span><span class="badge badge-pm">Bre-b</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">megapari</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">20bet</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span><span class="badge badge-pm">Nequi</span></div></td>
-        </tr>
-        <tr>
-          <td class="merchant-cell">pocketoption</td>
-          <td><div class="badge-wrap"><span class="badge badge-pm">PSE</span></div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
 <div class="section-divider"></div>
 
@@ -2385,6 +1847,40 @@ id="pse">
   </div>
 </div>
 
+
+
+<div class="section-divider"></div>
+
+<!-- ==================== FINAL CONCLUSIONS ==================== -->
+<div class="section-block" id="conclusions">
+  <span class="section-label">Summary</span>
+  <div class="payment-method-title" style="font-size:22px">🏁 Final Conclusions</div>
+  <div class="section-desc">Key conclusions will be added manually after final review.</div>
+
+  <div class="conclusions-grid">
+    <div class="conclusion-card">
+      <div class="conclusion-card-title">Conclusion 1</div>
+      <div class="conclusion-placeholder">Add conclusion here</div>
+    </div>
+    <div class="conclusion-card">
+      <div class="conclusion-card-title">Conclusion 2</div>
+      <div class="conclusion-placeholder">Add conclusion here</div>
+    </div>
+    <div class="conclusion-card">
+      <div class="conclusion-card-title">Conclusion 3</div>
+      <div class="conclusion-placeholder">Add conclusion here</div>
+    </div>
+    <div class="conclusion-card">
+      <div class="conclusion-card-title">Conclusion 4</div>
+      <div class="conclusion-placeholder">Add conclusion here</div>
+    </div>
+    <div class="conclusion-card">
+      <div class="conclusion-card-title">Conclusion 5</div>
+      <div class="conclusion-placeholder">Add conclusion here</div>
+    </div>
+  </div>
+</div>
+
 </div><!-- end .content -->
 
 <div style="background:var(--graphite);color:rgba(255,255,255,0.4);text-align:center;padding:18px;font-size:11px;letter-spacing:0.5px;">
@@ -2397,29 +1893,34 @@ id="pse">
 </div>
 <script>
 (function(){
-  const lb     = document.getElementById('lightbox');
-  const lbImg  = document.getElementById('lightbox-img');
-  const lbClose= document.getElementById('lightbox-close');
-
-  function openLb(src, alt){
-    lbImg.src = src;
-    lbImg.alt = alt || '';
-    lb.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLb(){
-    lb.classList.remove('active');
-    document.body.style.overflow = '';
-    lbImg.src = '';
-  }
-
+  // Lightbox
+  var lb=document.getElementById('lightbox'),
+      lbImg=document.getElementById('lightbox-img'),
+      lbClose=document.getElementById('lightbox-close');
+  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt||'';lb.classList.add('active');document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('active');document.body.style.overflow='';lbImg.src='';}
   document.querySelectorAll('#flow-screenshots .zoomable-image').forEach(function(img){
-    img.addEventListener('click', function(){ openLb(img.src, img.alt); });
+    img.addEventListener('click',function(){ openLb(img.dataset.full||img.src, img.alt); });
   });
+  lbClose.addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
 
-  lbClose.addEventListener('click', closeLb);
-  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb(); });
+  // Active nav highlight
+  var navLinks=document.querySelectorAll('.toc-bar a');
+  var sectionIds=['merchant-ranking','provider-coverage','flow-screenshots','findings','conclusions'];
+  function onScroll(){
+    var scrollY=window.scrollY+80, active='';
+    sectionIds.forEach(function(id){
+      var el=document.getElementById(id);
+      if(el && el.offsetTop<=scrollY) active=id;
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('toc-active', a.getAttribute('href')==='#'+active);
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
 })();
 </script>
 </body>
