@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NP88JWSF');
+</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Colombia R&D: Payment Providers &amp; Fields</title>
@@ -90,6 +99,10 @@
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     box-shadow: 0 2px 12px rgba(28, 26, 46, 0.07);
+  }
+  .toc-inner {
+    max-width: 1480px;
+    margin: 0 auto;
     padding: 7px 32px;
     display: flex;
     gap: 6px;
@@ -127,7 +140,7 @@
     scroll-margin-top: 52px;
   }
   /* MAIN CONTENT */
-  .content { padding: 28px 32px; max-width: min(96vw, 1700px); width: 100%; }
+  .content { width: 100%; max-width: 1480px; margin: 0 auto; padding: 28px 32px 72px; }
   /* SECTION HEADERS */
   .section-label {
     display: inline-block;
@@ -387,18 +400,14 @@
   /* PROVIDER PAYMENT METHOD TABLE */
   .ppm-table td.pm-cell .badge-wrap { flex-direction: row; }
   /* GRID FOR CARDS */
-  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 800px) { .cards-grid { grid-template-columns: 1fr; } .finding-body { grid-template-columns: 1fr; } }
+  .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .finding-body { grid-template-columns: 1fr; } }
   .section-block { margin-bottom: 48px; }
   /* COMPACT PROVIDER COVERAGE GRID */
   .cov-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-  }
-  @media (min-width: 1300px) { .cov-grid { grid-template-columns: repeat(4, 1fr); } }
-  @media (max-width: 900px)  { .cov-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px)  { .cov-grid { grid-template-columns: 1fr; } }
+  } } } }
   .cov-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -523,8 +532,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     align-items: start;
-  }
-  @media (max-width: 1000px) { .ranking-grid { grid-template-columns: 1fr; } }
+  } }
   .ranking-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -634,8 +642,7 @@
 
   .flow-grid {
     display:grid; grid-template-columns:repeat(2,1fr); gap:18px;
-  }
-  @media(max-width:860px){ .flow-grid{ grid-template-columns:1fr; } }
+  } }
 
   .flow-card {
     background:#fff; border:1px solid #E4DEF2; border-radius:18px;
@@ -724,12 +731,10 @@
   /* ── Final Conclusions ── */
   .conclusions-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 14px;
     margin-top: 18px;
-  }
-  @media (max-width: 1200px) { .conclusions-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 700px)  { .conclusions-grid { grid-template-columns: 1fr; } }
+  } } }
   .conclusion-card {
     min-height: 150px;
     background: #FFFFFF;
@@ -763,11 +768,8 @@
     gap: 16px;
     align-items: start;
   }
-  @media (max-width: 1100px) {
-    .findings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .finding-card { min-width: 0; }
   }
-  @media (max-width: 700px) {
-    .findings-grid { grid-template-columns: 1fr; }
   }
   .finding-card {
     background: #FFFFFF;
@@ -846,18 +848,63 @@
     border-top: 1px solid #c4b5fd;
   }
 
+
+  /* ── Responsive layout ── */
+  @media (max-width: 1100px) {
+    .findings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cov-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 1200px) {
+    .conclusions-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 1000px) {
+    .ranking-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 900px) {
+    .fc-grid { grid-template-columns: 1fr; }
+    .flow-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 800px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .finding-body { grid-template-columns: 1fr; }
+    .conclusions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 700px) {
+    .findings-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .cov-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .conclusions-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .content { padding: 22px 16px 56px; }
+    .toc-inner { padding: 7px 16px; overflow-x: auto; flex-wrap: nowrap; }
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 620px; }
+  }
+
 </style>
 </head>
 
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP88JWSF"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 <!-- STICKY NAV -->
 <nav class="toc-bar">
-  <span class="toc-label">Jump to section</span>
-  <a href="#merchant-ranking">Merchant Ranking</a>
-  <a href="#provider-coverage">Provider Coverage</a>
-  <a href="#flow-screenshots">Flow Screenshots</a>
-  <a href="#findings">Findings</a>
-  <a href="#conclusions">Final Conclusions</a>
+  <div class="toc-inner">
+    <span class="toc-label">Jump to section</span>
+    <a href="#merchant-ranking">Merchant Ranking</a>
+    <a href="#provider-coverage">Provider Coverage</a>
+    <a href="#flow-screenshots">Flow Screenshots</a>
+    <a href="#findings">Findings</a>
+    <a href="#conclusions">Final Conclusions</a>
+  </div>
 </nav>
 
 <div class="content">
