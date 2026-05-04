@@ -732,11 +732,11 @@
   /* ── Final Conclusions ── */
   .conclusions-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
     margin-top: 18px;
   }
-  @media (max-width: 1200px) { .conclusions-grid { grid-template-columns: repeat(3, 1fr); } }
+  
   @media (max-width: 700px)  { .conclusions-grid { grid-template-columns: 1fr; } }
   .conclusion-card {
     min-height: 140px;
@@ -786,6 +786,9 @@
   .conclusion-text { font-size: 11.5px; line-height: 1.4; margin-top: 7px; padding-top: 7px; }
   @media (max-width: 1100px) { .findings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 700px)  { .findings-grid { grid-template-columns: 1fr; } }
+
+  @media (max-width: 1000px) { .conclusions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px)  { .conclusions-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 
@@ -915,10 +918,11 @@
     <!-- 1. 4bill — 5 methods · 4 merchants -->
     <div class="cov-card">
       <div class="cov-name">4bill</div>
-      <div class="cov-stats">6 methods · 4 merchants</div>
+      <div class="cov-stats">7 methods · 5 merchants</div>
       <div class="cov-row"><span class="cov-tag">PSE</span><span class="cov-merchants">1win, bc.game, Brazino 777</span></div>
       <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, Jugabet, Brazino 777</span></div>
       <div class="cov-row"><span class="cov-tag">Nequi QR via Payzen</span><span class="cov-merchants">Jugabet, bc.game</span></div>
+      <div class="cov-row"><span class="cov-tag">Bre-b via cobre</span><span class="cov-merchants">Jugabet, bc.game, Brazino777, Quotex</span></div>
       <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1win, Jugabet, Brazino777</span></div>
       <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1win</span></div>
       <div class="cov-row"><span class="cov-tag">Movii (PSE)</span><span class="cov-merchants">1win</span></div>
@@ -927,10 +931,12 @@
     <!-- 2. P2P — 3 methods · 4 merchants -->
     <div class="cov-card">
       <div class="cov-name">P2P</div>
-      <div class="cov-stats">3 methods · 4 merchants</div>
+      <div class="cov-stats">5 methods · 4 merchants</div>
       <div class="cov-row"><span class="cov-tag">Bancolombia</span><span class="cov-merchants">1xbet, betwinner</span></div>
       <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
       <div class="cov-row"><span class="cov-tag">Tpaga (QR)</span><span class="cov-merchants">1win, melbet</span></div>
+      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win</span></div>
+      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1xbet</span></div>
     </div>
 
     <!-- 3. co-payer.erjqport.com — 2 methods · 3 merchants -->
@@ -980,13 +986,6 @@
       <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1win, 1xbet, Jugabet, melbet, Binomo</span></div>
     </div>
 
-    <!-- 9. 4bill -> cobre — 1 method · 4 merchants -->
-    <div class="cov-card">
-      <div class="cov-name">4bill -&gt; cobre</div>
-      <div class="cov-stats">1 method · 4 merchants</div>
-      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">Jugabet, bc.game, Brazino777, Quotex</span></div>
-    </div>
-
     <!-- TRX point — merged (was pay.trx-point.com + TRX point) — 2 methods · 5 merchants -->
     <div class="cov-card">
       <div class="cov-name">TRX point</div>
@@ -1017,21 +1016,6 @@
       <div class="cov-stats">1 method · 1 merchant</div>
       <div class="cov-row"><span class="cov-tag">Daviplata</span><span class="cov-merchants">1xbet</span></div>
     </div>
-
-    <!-- 16. Bre B h2h p2p — 1 method · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">Bre B h2h p2p</div>
-      <div class="cov-stats">1 method · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">Bre-b</span><span class="cov-merchants">1win</span></div>
-    </div>
-
-    <!-- 17. Nequi p2p — 1 method · 1 merchant -->
-    <div class="cov-card">
-      <div class="cov-name">Nequi p2p</div>
-      <div class="cov-stats">1 method · 1 merchant</div>
-      <div class="cov-row"><span class="cov-tag">Nequi</span><span class="cov-merchants">1xbet</span></div>
-    </div>
-
     <!-- 18. payretailers.com — 1 method · 1 merchant -->
     <div class="cov-card">
       <div class="cov-name">payretailers.com</div>
@@ -1724,10 +1708,6 @@
     </div>
     <div class="conclusion-card">
       <div class="conclusion-card-title">Conclusion 4</div>
-      <div class="conclusion-placeholder">Key points to review after the Colombia payment research.</div>
-    </div>
-    <div class="conclusion-card">
-      <div class="conclusion-card-title">Conclusion 5</div>
       <div class="conclusion-placeholder">This report format is useful and informative, but it requires a lot of manual research and validation.</div>
     </div>
   </div>
