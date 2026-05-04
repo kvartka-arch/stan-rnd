@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DTPQ34M8XZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DTPQ34M8XZ');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Venezuela — R&D Report</title>
 <style>
@@ -259,10 +267,8 @@ footer{background:#241A49;color:rgba(255,255,255,0.45);text-align:center;padding
     <a class="nav-pill" href="#providers">Provider Coverage</a>
     <a class="nav-pill" href="#banks">Bank Coverage</a>
     <a class="nav-pill" href="#merchants">Merchant Coverage</a>
-    <a class="nav-pill" href="#fields">Confirmation Fields</a>
     <a class="nav-pill" href="#pm-findings">Payment Method Findings</a>
     <a class="nav-pill" href="#payment-flow">Payment Flow</a>
-    <a class="nav-pill" href="#opportunities">Product Opportunities</a>
     <a class="nav-pill" href="#final">Final Findings</a>
   </div>
 </div>
@@ -791,122 +797,12 @@ footer{background:#241A49;color:rgba(255,255,255,0.45);text-align:center;padding
 </div><!-- /section merchants -->
 
 
-<!-- ===== 5. CONFIRMATION FIELDS MATRIX ===== -->
-<div id="fields" class="section">
-  <span class="section-kicker">05 · Confirmation Fields</span>
-  <h2 class="section-title">Confirmation Fields Matrix</h2>
-  <p class="section-subtitle">Required confirmation fields by merchant, method, and flow side.</p>
 
-  <div class="table-card">
-  <table>
-    <thead><tr>
-      <th>Merchant</th>
-      <th>Method</th>
-      <th>Flow Side</th>
-      <th>Provider</th>
-      <th>Fields Required</th>
-      <th>Screenshot</th>
-      <th>Auto-Check</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td><strong>1xBet</strong></td>
-        <td><span class="method-chip">Pago Móvil Directo</span></td>
-        <td><span class="badge badge-merchant-side">Merchant-side</span></td>
-        <td>—</td>
-        <td><span class="badge badge-merchant-side">National ID</span><span class="badge badge-merchant-side">Phone number</span><span class="badge badge-merchant-side">Transaction ID</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-      <tr>
-        <td><strong>1xBet</strong></td>
-        <td><span class="method-chip">Pago Móvil via provider</span></td>
-        <td><span class="badge badge-provider-side">Provider-side</span></td>
-        <td><span class="provider-label">pay.sirppayments.com</span></td>
-        <td><span class="badge badge-provider-side">Cédula</span><span class="badge badge-provider-side">Phone</span><span class="badge badge-provider-side">Bank</span><span class="badge badge-provider-side">Reference</span><span class="badge badge-provider-side">Date</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-      <tr>
-        <td><strong>1xBet</strong></td>
-        <td><span class="method-chip">Banco Provincial</span></td>
-        <td><span class="badge badge-merchant-side">Merchant-side</span></td>
-        <td>—</td>
-        <td><span class="badge badge-merchant-side">Bank account / phone</span><span class="badge badge-merchant-side">Full name</span><span class="badge badge-merchant-side">Cédula</span><span class="badge badge-red">Receipt screenshot</span></td>
-        <td><span class="badge badge-red">Yes</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-      <tr>
-        <td><strong>1xBet</strong></td>
-        <td><span class="method-chip">Bancamiga</span></td>
-        <td><span class="badge badge-merchant-side">Merchant-side</span></td>
-        <td>—</td>
-        <td><span class="badge badge-merchant-side">Bank account / phone</span><span class="badge badge-merchant-side">Full name</span><span class="badge badge-merchant-side">Cédula</span><span class="badge badge-red">Receipt screenshot</span></td>
-        <td><span class="badge badge-red">Yes</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-      <tr>
-        <td><strong>1xBet</strong></td>
-        <td><span class="method-chip">Banesco / Pago Móvil</span></td>
-        <td><span class="badge badge-merchant-side">Merchant-side</span></td>
-        <td>—</td>
-        <td><span class="badge badge-merchant-side">Phone (sender)</span><span class="badge badge-merchant-side">Cédula / RIF</span><span class="badge badge-merchant-side">Reference</span><span class="badge badge-red">Receipt screenshot</span></td>
-        <td><span class="badge badge-red">Yes</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-      <tr>
-        <td><strong>1win</strong></td>
-        <td><span class="method-chip">Pago Móvil</span></td>
-        <td><span class="badge badge-merchant-side">Merchant-side</span></td>
-        <td>—</td>
-        <td><span class="badge badge-merchant-side">Bank</span><span class="badge badge-merchant-side">Phone number</span><span class="badge badge-merchant-side">Document number</span><span class="badge badge-merchant-side">Transaction ID</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-      <tr>
-        <td><strong>Melbet</strong></td>
-        <td><span class="method-chip">Banco Provincial P2P</span></td>
-        <td><span class="badge badge-merchant-side">Merchant-side</span></td>
-        <td>—</td>
-        <td><span class="badge badge-merchant-side">Bank account / phone</span><span class="badge badge-merchant-side">Full name</span><span class="badge badge-merchant-side">Cédula</span><span class="badge badge-red">Screenshot</span><span class="badge badge-merchant-side">Transaction ID / Ref</span></td>
-        <td><span class="badge badge-red">Yes</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-      <tr>
-        <td><strong>Mystake</strong></td>
-        <td><span class="method-chip">Pago Móvil</span></td>
-        <td><span class="badge badge-provider-side">Provider-side</span></td>
-        <td><span class="provider-label">pagoflash.com</span></td>
-        <td><span class="badge badge-provider-side">Bank</span><span class="badge badge-provider-side">Phone</span><span class="badge badge-provider-side">Document number</span><span class="badge badge-provider-side">Transaction ID</span><span class="badge badge-provider-side">Amount</span><span class="badge badge-provider-side">Date</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-        <td><span class="badge badge-core">Yes</span></td>
-      </tr>
-      <tr>
-        <td><strong>Binomo</strong></td>
-        <td><span class="method-chip">Pago Móvil</span></td>
-        <td><span class="badge badge-provider-side">Provider-side</span></td>
-        <td><span class="provider-label">pay.trx-point.com</span></td>
-        <td><span class="badge badge-provider-side">Phone number</span><span class="badge badge-provider-side">Identity document</span><span class="badge badge-provider-side">Bank selection</span><span class="badge badge-provider-side">Reference number</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-        <td><span class="badge badge-additional">No</span></td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-  <p style="margin-top:10px;font-size:12px;color:#655F7A;">
-    <span class="badge badge-merchant-side">Blue badge</span> = Merchant-side field &nbsp;
-    <span class="badge badge-provider-side">Purple badge</span> = Provider-side field &nbsp;
-    <span class="badge badge-red">Red badge</span> = High-friction field (screenshot upload)
-  </p>
-</div>
-
-
-<!-- ===== 6. PAYMENT METHOD FINDINGS ===== -->
+<!-- ===== 5. PAYMENT METHOD FINDINGS ===== -->
 <div id="pm-findings" class="section">
-  <span class="section-kicker">06 · Payment Method Findings</span>
+  <span class="section-kicker">05 · Payment Method Findings</span>
   <h2 class="section-title">Payment Method Findings</h2>
-  <p class="section-subtitle">Field analysis and product conclusions per payment method, based on observed flows.</p>
+  <p class="section-subtitle">Key fields observed per payment method across all tested flows.</p>
 
   <div class="findings-grid">
 
@@ -934,12 +830,6 @@ footer{background:#241A49;color:rgba(255,255,255,0.45);text-align:center;padding
         <span class="badge badge-additional">Full account holder name</span>
         <span class="badge badge-additional">Email</span>
       </div>
-
-      <div class="field-group-title">Merchant-side pattern</div>
-      <p style="font-size:13px;color:#3A315A;line-height:1.4;">Users appear to enter phone number, bank, and transaction ID after completing the transfer in their banking app. National ID or Cédula is commonly requested.</p>
-
-      <div class="field-group-title">Provider-side pattern</div>
-      <p style="font-size:13px;color:#3A315A;line-height:1.4;">Provider-hosted forms (pay.sirppayments.com, pagoflash.com, pay.trx-point.com) appear to add bank, date, and amount fields to structure the confirmation process.</p>
 
       <div class="minimum-box">
         <div class="minimum-box-title">Recommended minimum field set</div>
@@ -974,12 +864,6 @@ footer{background:#241A49;color:rgba(255,255,255,0.45);text-align:center;padding
         <span class="badge badge-additional">Transfer concept text ("TRANSFERENCIA")</span>
       </div>
 
-      <div class="field-group-title">Merchant-side pattern</div>
-      <p style="font-size:13px;color:#3A315A;line-height:1.4;">Bank-transfer flows (Banco Provincial, Bancamiga, Banesco) appear to require the user to provide their own account or phone number, full name, Cédula, and a screenshot of the completed transfer. Transfer concept instructions appear to be specific to certain routes.</p>
-
-      <div class="field-group-title">Provider-side pattern</div>
-      <p style="font-size:13px;color:#3A315A;line-height:1.4;">Not observed for pure bank-transfer routes. Provider-side flows appear to focus on Pago Móvil.</p>
-
       <div class="minimum-box">
         <div class="minimum-box-title">Recommended minimum field set</div>
         <span class="badge badge-core">Bank account or phone</span>
@@ -996,9 +880,9 @@ footer{background:#241A49;color:rgba(255,255,255,0.45);text-align:center;padding
 </div>
 
 
-<!-- ===== 7. PAYMENT FLOW ===== -->
+<!-- ===== 6. PAYMENT FLOW ===== -->
 <div id="payment-flow" class="section">
-  <span class="section-kicker">07 · Payment Flow</span>
+  <span class="section-kicker">06 · Payment Flow</span>
   <h2 class="section-title">Payment Flow</h2>
   
 
@@ -1198,52 +1082,10 @@ footer{background:#241A49;color:rgba(255,255,255,0.45);text-align:center;padding
 
 
 
-<!-- ===== 8. PRODUCT OPPORTUNITIES ===== -->
-<div id="opportunities" class="section">
-  <span class="section-kicker">08 · Product Opportunities</span>
-  <h2 class="section-title">Product Opportunities</h2>
-  <p class="section-subtitle">Recommended product direction for Venezuela payment flows.</p>
 
-  <div class="opp-grid">
-    <div class="opp-card">
-      <div class="opp-title">Support Pago Móvil confirmation flows</div>
-      <div class="opp-body">All tested merchants use Pago Móvil as the main deposit method. Full support for Pago Móvil confirmation — including bank, phone, ID, amount, transaction ID and date — is required for this market.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-title">Support all 5 observed banks</div>
-      <div class="opp-body">Banco Activo, Banco Provincial, Banco R4 / MiBanco, Bancamiga and Banesco appear in tested flows. Bank account structure and phone-number formats need to be validated per bank.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-title">Build automatic payment checking</div>
-      <div class="opp-body">Match bank, phone number, ID document, amount, transaction ID and date automatically. This is the main improvement opportunity and the pattern already observed in the Mystake / pagoflash.com flow.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-title">Keep manual fallback when auto-check fails</div>
-      <div class="opp-body">If automatic checking does not confirm the payment, users should be able to enter bank, phone, document, reference, amount and date manually to trigger a manual review.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-title">Support receipt screenshot upload</div>
-      <div class="opp-body">Screenshot upload is required in several bank-transfer flows. Support jpg, jpeg, png and pdf formats. A receipt-parsing step would reduce manual review time.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-title">Offer provider-hosted and merchant-side forms</div>
-      <div class="opp-body">Both integration models are active in this market. Provider-hosted pages provide more structure. Merchant-side forms provide more control. Supporting both covers more merchant types.</div>
-    </div>
-    <div class="opp-card">
-      <div class="opp-title">Give users clear payment instructions</div>
-      <div class="opp-body">Several flows require specific words in the transfer concept field (e.g. "TRANSFERENCIA"). Clear on-screen guidance reduces deposit failures caused by incorrect transfer details.</div>
-    </div>
-    <div class="opp-card" style="border-left-color:#2E9E5B;">
-      <div class="opp-title">Prioritize high-ranking merchants</div>
-      <div class="opp-body">juega en linea (rank 1 betting, score 1.000) and deriv (rank 1 forex, score 0.9538) are the highest-traffic Venezuela merchants with no tested flows. These are the top outreach targets.</div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ===== 9. FINAL FINDINGS ===== -->
+<!-- ===== 7. FINAL FINDINGS ===== -->
 <div id="final" class="section">
-  <span class="section-kicker">09 · Final Findings</span>
+  <span class="section-kicker">07 · Final Findings</span>
   <h2 class="section-title">Final Findings</h2>
   <p class="section-subtitle">Key takeaways from the Venezuela payment R&D.</p>
 
