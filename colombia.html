@@ -739,11 +739,12 @@
   @media (max-width: 1200px) { .conclusions-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 700px)  { .conclusions-grid { grid-template-columns: 1fr; } }
   .conclusion-card {
-    min-height: 150px;
+    min-height: 140px;
     background: #FFFFFF;
-    border: 2px dashed var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--purple);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(108,71,216,0.06);
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -754,13 +755,14 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--purple);
+    color: #8B879B;
   }
   .conclusion-placeholder {
-    color: #c5c1d6;
+    color: var(--graphite);
     font-size: 13px;
-    line-height: 1.5;
-    font-style: italic;
+    line-height: 1.55;
+    font-style: normal;
+    font-weight: 500;
   }
 
 
